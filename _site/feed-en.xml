@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Simple Blog Theme</title>
+    <description>Write an awesome description for your new site here. You can edit this line in index.md. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</description>
+    <link>https://lorepirri.gitlab.io/jekyll-theme-simple-blog/index.html</link>
+    <atom:link href="https://lorepirri.gitlab.io/jekyll-theme-simple-blog/feed-en.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 21 Nov 2017 20:57:58 +0900</pubDate>
+    <lastBuildDate>Tue, 21 Nov 2017 20:57:58 +0900</lastBuildDate>
+    <generator>Jekyll v3.0.1</generator>
+    
+    
+      <item>
+        <title>Cayman Blog Theme</title>
+        <description>&lt;p&gt;This is an example of a project page. As you can see there are buttons in the header to go to the repository, or directly download the source code.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 11 Oct 2017 00:00:00 +0900</pubDate>
+        <link>https://lorepirri.gitlab.io/jekyll-theme-simple-blog/example-project-page.html</link>
+        <guid isPermaLink="true">https://lorepirri.gitlab.io/jekyll-theme-simple-blog/example-project-page.html</guid>
+        
+        <category>example</category>
+        
+        <category>project</category>
+        
+        <category>jekyll theme</category>
+        
+        <category>cayman blog theme</category>
+        
+        
+        <category>projects</category>
+        
+      </item>
+    
+      <item>
+        <title>Repository page: SEO for Jekyll</title>
+        <description>&lt;p&gt;This is an example of a repository page. Sometimes you write an article which refers to a repository. As you can see there are buttons in the header to go to the repository, or directly download the source code.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 10 Oct 2017 00:00:00 +0900</pubDate>
+        <link>https://lorepirri.gitlab.io/jekyll-theme-simple-blog/example-repository-page.html</link>
+        <guid isPermaLink="true">https://lorepirri.gitlab.io/jekyll-theme-simple-blog/example-repository-page.html</guid>
+        
+        <category>example</category>
+        
+        <category>repository</category>
+        
+        <category>jekyll seo</category>
+        
+        <category>seo</category>
+        
+        
+        <category>articles</category>
+        
+      </item>
+    
+      <item>
+        <title>Post Example In English</title>
+        <description>&lt;p&gt;This post is in English.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 21 Aug 2017 00:00:00 +0900</pubDate>
+        <link>https://lorepirri.gitlab.io/jekyll-theme-simple-blog/post-example-in-english.html</link>
+        <guid isPermaLink="true">https://lorepirri.gitlab.io/jekyll-theme-simple-blog/post-example-in-english.html</guid>
+        
+        <category>example</category>
+        
+        <category>english</category>
+        
+        <category>jekyll theme</category>
+        
+        <category>simple blog theme</category>
+        
+        
+        <category>articles</category>
+        
+      </item>
+    
+  </channel>
+</rss>
