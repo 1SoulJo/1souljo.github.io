@@ -4,13 +4,22 @@
  <title>1SoulJo</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-11-22T12:18:12+09:00</updated>
+ <updated>2017-11-22T12:21:12+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>1SoulJo</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Test post</title>
+   <link href="http://localhost:4000/2017/11/22/test-post/"/>
+   <updated>2017-11-22T00:00:00+09:00</updated>
+   <id>http://localhost:4000/2017/11/22/test-post</id>
+   <content type="html">&lt;h2 id=&quot;test-post&quot;&gt;Test post&lt;/h2&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Welcome to Jekyll!</title>
