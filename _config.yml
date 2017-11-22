@@ -60,5 +60,5 @@ hero:
 mathjax: true # whether support mathjax
 # google_analytics_token: 'UA-00000000-1' # leave blank if you don't want google analytics
 google_analytics_token: ''
-disqus_short_name: '1souljo' # leave blank if you don't want disqus
+# disqus_short_name: '1souljo' # leave blank if you don't want disqus
 
