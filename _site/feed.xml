@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-22T14:37:43+09:00</updated><id>http://localhost:4000/</id><title type="html">1SoulJo</title><subtitle>Personal blog</subtitle><author><name>1SoulJo</name></author><entry><title type="html">Test post</title><link href="http://localhost:4000/2017/11/22/test-post/" rel="alternate" type="text/html" title="Test post" /><published>2017-11-22T00:00:00+09:00</published><updated>2017-11-22T00:00:00+09:00</updated><id>http://localhost:4000/2017/11/22/test-post</id><content type="html" xml:base="http://localhost:4000/2017/11/22/test-post/">&lt;h1 id=&quot;test-post&quot;&gt;Test post&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-22T15:30:50+09:00</updated><id>http://localhost:4000/</id><title type="html">1SoulJo</title><subtitle>Personal blog</subtitle><author><name>1SoulJo</name></author><entry><title type="html">Test post</title><link href="http://localhost:4000/2017/11/22/test-post/" rel="alternate" type="text/html" title="Test post" /><published>2017-11-22T00:00:00+09:00</published><updated>2017-11-22T00:00:00+09:00</updated><id>http://localhost:4000/2017/11/22/test-post</id><content type="html" xml:base="http://localhost:4000/2017/11/22/test-post/">&lt;h1 id=&quot;test-post&quot;&gt;Test post&lt;/h1&gt;
 
 &lt;h2 id=&quot;test-test-text&quot;&gt;Test test text&lt;/h2&gt;
 
@@ -20,7 +20,59 @@
 &lt;p&gt;일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십
 |test|test|test|
 |-|-|-|
-|1|2|1|&lt;/p&gt;</content><author><name>1SoulJo</name></author><summary type="html">Test post Test test text item 1 한글 테스트 입니다. 과연 잘 될 것인가. 그렇다면 왜 도대체 왜 잘 안나오는 것인가. ok. this is english text. 한글 테스트 더 해봅시다. 이럴수가. Very Good. 일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십 |test|test|test| |-|-|-| |1|2|1|</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2017/11/21/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2017-11-21T21:01:29+09:00</published><updated>2017-11-21T21:01:29+09:00</updated><id>http://localhost:4000/jekyll/update/2017/11/21/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2017/11/21/welcome-to-jekyll/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+|1|2|1|&lt;/p&gt;
+
+&lt;h1 id=&quot;test-input&quot;&gt;Test Input&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;test&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;안녕하세요&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;test&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;test&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;test&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;hello&quot;&gt;hello&lt;/h2&gt;
+
+&lt;p&gt;안녕하세요.&lt;/p&gt;
+
+&lt;h2 id=&quot;markdown-language&quot;&gt;Markdown language&lt;/h2&gt;
+
+&lt;p&gt;Hello this is a markdown language.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tensorflow&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>1SoulJo</name></author><summary type="html">Test post Test test text item 1 한글 테스트 입니다. 과연 잘 될 것인가. 그렇다면 왜 도대체 왜 잘 안나오는 것인가. ok. this is english text. 한글 테스트 더 해봅시다. 이럴수가. Very Good. 일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십 |test|test|test| |-|-|-| |1|2|1| Test Input test 안녕하세요 test test test 1 1 2             hello 안녕하세요. Markdown language Hello this is a markdown language. import tensorflow as tf import numpy as np a = np.zeros([10, 5])</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2017/11/21/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2017-11-21T21:01:29+09:00</published><updated>2017-11-21T21:01:29+09:00</updated><id>http://localhost:4000/jekyll/update/2017/11/21/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2017/11/21/welcome-to-jekyll/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
