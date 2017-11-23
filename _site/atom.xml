@@ -4,7 +4,7 @@
  <title>1SoulJo</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-11-23T11:38:56+09:00</updated>
+ <updated>2017-11-23T12:20:39+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>1SoulJo</name>
@@ -101,13 +101,37 @@
    <link href="http://localhost:4000/2017/11/22/rectricted-boltzmann-machine/"/>
    <updated>2017-11-22T00:00:00+09:00</updated>
    <id>http://localhost:4000/2017/11/22/rectricted-boltzmann-machine</id>
-   <content type="html">&lt;h5 id=&quot;제한된-볼츠만-머신&quot;&gt;제한된 볼츠만 머신&lt;/h5&gt;
+   <content type="html">&lt;h2 id=&quot;제한된-볼츠만-머신&quot;&gt;제한된 볼츠만 머신&lt;/h2&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;x * W = h&lt;/script&gt;
+&lt;p&gt;데이터를 재구성(reconstruct) 함을 통해 입력 데이터의 패턴을 찾아내는 모델.&lt;/p&gt;
 
-&lt;p&gt;입력값 x 에 대해서 W 를 적용한 결과가 h 일 때, 이 h 로부터 다시 x’ 를 유추하는 모델.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Geoff Hinton 교수가 제안&lt;/li&gt;
+  &lt;li&gt;Vanishing Gradient 에 대한 해결 방안으로 사용 가능&lt;/li&gt;
+  &lt;li&gt;Unsupervised&lt;/li&gt;
+  &lt;li&gt;Feature extractor 의 일종이라고 할 수 있다.
+    &lt;ul&gt;
+      &lt;li&gt;데이터에 내재한 패턴을 찾아냄.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;auto encoder 와 유사함.&lt;/li&gt;
+  &lt;li&gt;Shallow 2-layer net 이다.
+    &lt;ul&gt;
+      &lt;li&gt;visible layer&lt;/li&gt;
+      &lt;li&gt;hidden layer&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(x) = \frac{e^{-E(x)}}{Z} , Z = \sum_x{e^{-E(x)}}&lt;/script&gt;
+&lt;p&gt;&lt;img src=&quot;/public/img/RBM_1.jpg&quot; alt=&quot;&amp;quot;RBM&amp;quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;recontruction&quot;&gt;Recontruction&lt;/h2&gt;
+
+&lt;p&gt;forward / backward 를 반복적으로 학습시켜 data 의 숨겨진 feature 들을 학습시킨다.&lt;br /&gt;
+loss 는 &lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%BF%A8%EB%B0%B1-%EB%9D%BC%EC%9D%B4%EB%B8%94%EB%9F%AC_%EB%B0%9C%EC%82%B0&quot; target=&quot;_blank&quot;&gt;KL Divergence&lt;/a&gt; 를 사용.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/RBM_2.jpg&quot; alt=&quot;&amp;quot;RBM&amp;quot;&quot; /&gt;&lt;/p&gt;
+
 </content>
  </entry>
  
