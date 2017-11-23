@@ -9,9 +9,9 @@
     font-size: .8rem;
 
     h1 { font-size: 1.6rem; }
-    h2 { 
+    h2 {
       margin: 2em 0 1em 0;
-      font-size: 1.0rem; 
+      font-size: 1.0rem;
     }
     h3, h4, h5, h6 {
       margin: 2em 0 1em 0;
@@ -44,6 +44,11 @@
   }
 }
 
+
+.MathJax_SVG_Display {
+  text-align: left !important;
+}
+
 /* Related posts */
 .related {
   padding-top: 2rem;
@@ -68,4 +73,3 @@
 .related-posts li a:hover small {
   color: inherit;
 }
-
