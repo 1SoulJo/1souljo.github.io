@@ -7,7 +7,7 @@ url: http://1souljo.github.io
 logo: '/public/logo.png'
 
 # Site configurations
-gems:
+plugins:
   - jekyll-paginate
 markdown: kramdown
 kramdown:
@@ -15,10 +15,12 @@ kramdown:
 excerpt_separator: "<!-- more -->"
 sass:
   style: compressed
-  sass_dir: _scss    
+  sass_dir: _scss
 paginate: 5
 paginate_path: '/blog/page:num'
 permalink: pretty
+future: true
+timezone: KR
 
 version: 1.0.0
 
@@ -61,4 +63,3 @@ mathjax: true # whether support mathjax
 # google_analytics_token: 'UA-00000000-1' # leave blank if you don't want google analytics
 google_analytics_token: ''
 # disqus_short_name: '1souljo' # leave blank if you don't want disqus
-

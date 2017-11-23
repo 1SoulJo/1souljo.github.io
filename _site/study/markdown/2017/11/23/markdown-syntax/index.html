@@ -11,7 +11,7 @@
 
   <title>
     
-      Restricted Boltzmann Machines &middot; 1SoulJo
+      Markdown syntax &middot; 1SoulJo
     
   </title>
 
@@ -194,43 +194,185 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Restricted Boltzmann Machines</h1>
+  <h1 class="post-title">Markdown syntax</h1>
   <span class="post-date">23 Nov 2017</span>
    | 
   
   
   <article>
-    <h2 id="제한된-볼츠만-머신">제한된 볼츠만 머신</h2>
+    <h2 id="table-of-contents">Table of Contents</h2>
 
-<p>데이터를 재구성(reconstruct) 함을 통해 입력 데이터의 패턴을 찾아내는 모델.</p>
+<ol>
+  <li><a href="#headers">Headers</a></li>
+  <li><a href="#block-quote">Block Quote</a></li>
+  <li><a href="#list">List</a>
+    <ul>
+      <li><a href="#ordered-list">Ordered List</a></li>
+      <li><a href="#unordered-list">Unordered List</a></li>
+    </ul>
+  </li>
+  <li><a href="#code">Code</a></li>
+  <li><a href="#hr">수평선</a></li>
+  <li><a href="#links">Links</a></li>
+  <li><a href="#emphasis">강조</a></li>
+  <li><a href="#images">Images</a></li>
+</ol>
+
+<h1 id="1-headers-">1. Headers <a name="headers"></a></h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># This is a H1
+## This is a H2
+### This is a H3
+#### This is a H4
+##### This is a H5
+###### This is a H6
+</code></pre></div></div>
+
+<h1 id="this-is-a-h1">This is a H1</h1>
+<h2 id="this-is-a-h2">This is a H2</h2>
+<h3 id="this-is-a-h3">This is a H3</h3>
+<h4 id="this-is-a-h4">This is a H4</h4>
+<h5 id="this-is-a-h5">This is a H5</h5>
+<h6 id="this-is-a-h6">This is a H6</h6>
+
+<h1 id="2-block-quote-">2. Block Quote <a name="block-quote"></a></h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; This is a blockquote.
+&gt;&gt; This is a blockquote.
+&gt;&gt;&gt; This is a blockquote.
+</code></pre></div></div>
+
+<blockquote>
+  <p>This is a blockquote.</p>
+  <blockquote>
+    <p>This is a blockquote.</p>
+    <blockquote>
+      <p>This is a blockquote.</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1 id="3-list-">3. List <a name="list"></a></h1>
+
+<h2 id="3-1-ordered-list-">3-1 Ordered list <a name="ordered-list"></a></h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 첫번째
+2. 두번째
+3. 세번째
+</code></pre></div></div>
+
+<ol>
+  <li>첫번째</li>
+  <li>두번째</li>
+  <li>세번째</li>
+</ol>
+
+<h2 id="3-2-unordered-list-">3-2 Unordered list <a name="unordered-list"></a></h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 빨강
+  * 녹색
+    * 파랑
+
++ 빨강
+  + 녹색
+    + 파랑
+
+- 빨강
+- 녹색
+- 파랑
+</code></pre></div></div>
 
 <ul>
-  <li>Geoff Hinton 교수가 제안</li>
-  <li>Vanishing Gradient 에 대한 해결 방안으로 사용 가능</li>
-  <li>Unsupervised</li>
-  <li>Feature extractor 의 일종이라고 할 수 있다.
+  <li>빨강
     <ul>
-      <li>데이터에 내재한 패턴을 찾아냄.</li>
+      <li>녹색
+        <ul>
+          <li>파랑</li>
+        </ul>
+      </li>
     </ul>
   </li>
-  <li>auto encoder 와 유사함.</li>
-  <li>Shallow 2-layer net 이다.
+  <li>빨강
     <ul>
-      <li>visible layer</li>
-      <li>hidden layer</li>
+      <li>녹색
+        <ul>
+          <li>파랑</li>
+        </ul>
+      </li>
     </ul>
   </li>
+  <li>빨강</li>
+  <li>녹색</li>
+  <li>파랑</li>
 </ul>
 
-<p><img src="/public/img/RBM_1.jpg" alt="&quot;RBM&quot;" /></p>
+<h1 id="4-code-">4. code <a name="code"></a></h1>
 
-<h2 id="recontruction">Recontruction</h2>
+<p>` 3개 연속으로 입력 후 코드 입력하면 됨. (코드 끝나면 ` 3개)</p>
 
-<p>forward / backward 를 반복적으로 학습시켜 data 의 숨겨진 feature 들을 학습시킨다.<br />
-loss 는 <a href="https://ko.wikipedia.org/wiki/%EC%BF%A8%EB%B0%B1-%EB%9D%BC%EC%9D%B4%EB%B8%94%EB%9F%AC_%EB%B0%9C%EC%82%B0" target="_blank">KL Divergence</a> 를 사용.</p>
+<p>```<br />
+print(‘hello world’)<br />
+```</p>
 
-<p><img src="/public/img/RBM_2.jpg" alt="&quot;RBM&quot;" /></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print('hello world')
+</code></pre></div></div>
 
+<h1 id="5-수평선-">5. 수평선 <a name="hr"></a></h1>
+
+<p>아래 줄은 모두 수평선을 만든다. 마크다운 문서를 미리보기로 출력할 때 페이지 나누기 용도로 많이 사용한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* * *
+또는,
+***
+또는,
+*****
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="6-links-">6. Links <a name="links"></a></h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[link keyword][id]
+[id]: URL
+</code></pre></div></div>
+<p><a href="http://m.naver.com">url</a></p>
+
+<p>새 탭에서 여는 방법:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[link keyword][id]{:target='_blank'}
+[id]: URL
+</code></pre></div></div>
+<p><a href="http://m.naver.com" target="_blank">new tab</a></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>인라인 링크 : [title](link url)
+</code></pre></div></div>
+
+<p><a href="http://www.naver.com">inline link</a></p>
+
+<h1 id="7-강조-">7. 강조 <a name="emphasis"></a></h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*single asterisks*
+_single underscores_
+**double asterisks**
+__double underscores__
+++underline++
+~~cancelline~~
+</code></pre></div></div>
+
+<p><em>single asterisks</em><br />
+<em>single underscores</em><br />
+<strong>double asterisks</strong><br />
+<strong>double underscores</strong><br />
+++underline++<br />
+<del>cancelline</del></p>
+
+<h1 id="8-images-">8. Images <a name="images"></a></h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Alt text](/public/img/machine.jpg)
+![Alt text](/public/img/machine.jpg "Optional title")
+</code></pre></div></div>
+
+<p><img src="/public/img/maschine.jpg" alt="&quot;maschine&quot;" title="maschine" /></p>
 
   </article>
 </div>
@@ -241,9 +383,9 @@ loss 는 <a href="https://ko.wikipedia.org/wiki/%EC%BF%A8%EB%B0%B1-%EB%9D%BC%EC%
     
       <li>
         <h3>
-          <a href="/test/2017/11/23/test-post/">
-            Test post
-            <small>23 Nov 2017</small>
+          <a href="/study/machinelearning/2017/11/22/rectricted-boltzmann-machine/">
+            Restricted Boltzmann Machines
+            <small>22 Nov 2017</small>
           </a>
         </h3>
       </li>
