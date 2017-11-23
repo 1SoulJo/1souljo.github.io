@@ -175,25 +175,25 @@ a.sidebar-nav-item:focus {
   @include transition(transform .3s ease-in-out);
 }
 
-// #sidebar-checkbox:checked + .sidebar {
-//   z-index: 10;
-//   visibility: visible;
-// }
+#sidebar-checkbox:checked + .sidebar {
+  z-index: 10;
+  visibility: visible;
+}
 
-// #sidebar-checkbox:checked ~ .wrap {
-.wrap {
+#sidebar-checkbox:checked ~ .wrap {
+// .wrap {
   @include transform(translateX(if($overlay-sidebar,0,if($reverse-layout, -14rem, 14rem))));
 }
 
-// #sidebar-checkbox:checked ~ .sidebar {
-.sidebar {
+#sidebar-checkbox:checked ~ .sidebar {
+// .sidebar {
   @include transform(translateX(if($reverse-layout, -14rem, 14rem)));
   @if $overlay-sidebar {
     box-shadow: .25rem 0 .5rem rgba(0,0,0,.1);
     @if $reverse-layout { box-shadow: -.25rem 0 .5rem rgba(0,0,0,.2); }
   }
-  z-index: 10;
-  visibility: visible;
+  // z-index: 10;
+  // visibility: visible;
 }
 
 #sidebar-checkbox:checked ~ .sidebar-toggle {
