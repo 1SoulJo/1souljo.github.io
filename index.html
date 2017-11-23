@@ -8,11 +8,10 @@ title: Home
     <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
     <p>
         <small>
-            <strong>{{ post.date | date: "%B %e, %Y" }}</strong>
-             . {{ post.category }} 
+            <strong>{{ post.date | date: "%b %e, %Y" }}</strong>
         </small>
-        <!--{% for tag in post.categories %}
-            <span>{{ tag }}</span>
-        {% endfor %} -->
+        {% for tag in post.categories %}
+            <small><small><span>{{ tag }}</span></small></small>
+        {% endfor %}
     </p>
 {% endfor %}

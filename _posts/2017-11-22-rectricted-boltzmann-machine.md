@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Restricted Boltzmann Machines
+date: 2017-11-22 16:00:00 -0900
+categories: study machinelearning
 ---
 ## 제한된 볼츠만 머신
 

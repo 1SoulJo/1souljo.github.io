@@ -4,7 +4,7 @@
  <title>1SoulJo</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-11-23T12:25:16+09:00</updated>
+ <updated>2017-11-23T14:08:13+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>1SoulJo</name>
@@ -13,10 +13,49 @@
 
  
  <entry>
+   <title>Restricted Boltzmann Machines</title>
+   <link href="http://localhost:4000/study/machinelearning/2017/11/23/rectricted-boltzmann-machine/"/>
+   <updated>2017-11-23T10:00:00+09:00</updated>
+   <id>http://localhost:4000/study/machinelearning/2017/11/23/rectricted-boltzmann-machine</id>
+   <content type="html">&lt;h2 id=&quot;제한된-볼츠만-머신&quot;&gt;제한된 볼츠만 머신&lt;/h2&gt;
+
+&lt;p&gt;데이터를 재구성(reconstruct) 함을 통해 입력 데이터의 패턴을 찾아내는 모델.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Geoff Hinton 교수가 제안&lt;/li&gt;
+  &lt;li&gt;Vanishing Gradient 에 대한 해결 방안으로 사용 가능&lt;/li&gt;
+  &lt;li&gt;Unsupervised&lt;/li&gt;
+  &lt;li&gt;Feature extractor 의 일종이라고 할 수 있다.
+    &lt;ul&gt;
+      &lt;li&gt;데이터에 내재한 패턴을 찾아냄.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;auto encoder 와 유사함.&lt;/li&gt;
+  &lt;li&gt;Shallow 2-layer net 이다.
+    &lt;ul&gt;
+      &lt;li&gt;visible layer&lt;/li&gt;
+      &lt;li&gt;hidden layer&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/RBM_1.jpg&quot; alt=&quot;&amp;quot;RBM&amp;quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;recontruction&quot;&gt;Recontruction&lt;/h2&gt;
+
+&lt;p&gt;forward / backward 를 반복적으로 학습시켜 data 의 숨겨진 feature 들을 학습시킨다.&lt;br /&gt;
+loss 는 &lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%BF%A8%EB%B0%B1-%EB%9D%BC%EC%9D%B4%EB%B8%94%EB%9F%AC_%EB%B0%9C%EC%82%B0&quot; target=&quot;_blank&quot;&gt;KL Divergence&lt;/a&gt; 를 사용.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/RBM_2.jpg&quot; alt=&quot;&amp;quot;RBM&amp;quot;&quot; /&gt;&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
    <title>Test post</title>
-   <link href="http://localhost:4000/2017/11/22/test-post/"/>
-   <updated>2017-11-22T00:00:00+09:00</updated>
-   <id>http://localhost:4000/2017/11/22/test-post</id>
+   <link href="http://localhost:4000/test/2017/11/23/test-post/"/>
+   <updated>2017-11-23T08:00:00+09:00</updated>
+   <id>http://localhost:4000/test/2017/11/23/test-post</id>
    <content type="html">&lt;h1 id=&quot;test-post&quot;&gt;Test post&lt;/h1&gt;
 
 &lt;h2 id=&quot;test-test-text&quot;&gt;Test test text&lt;/h2&gt;
@@ -93,45 +132,6 @@
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'test'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Restricted Boltzmann Machines</title>
-   <link href="http://localhost:4000/2017/11/22/rectricted-boltzmann-machine/"/>
-   <updated>2017-11-22T00:00:00+09:00</updated>
-   <id>http://localhost:4000/2017/11/22/rectricted-boltzmann-machine</id>
-   <content type="html">&lt;h2 id=&quot;제한된-볼츠만-머신&quot;&gt;제한된 볼츠만 머신&lt;/h2&gt;
-
-&lt;p&gt;데이터를 재구성(reconstruct) 함을 통해 입력 데이터의 패턴을 찾아내는 모델.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Geoff Hinton 교수가 제안&lt;/li&gt;
-  &lt;li&gt;Vanishing Gradient 에 대한 해결 방안으로 사용 가능&lt;/li&gt;
-  &lt;li&gt;Unsupervised&lt;/li&gt;
-  &lt;li&gt;Feature extractor 의 일종이라고 할 수 있다.
-    &lt;ul&gt;
-      &lt;li&gt;데이터에 내재한 패턴을 찾아냄.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;auto encoder 와 유사함.&lt;/li&gt;
-  &lt;li&gt;Shallow 2-layer net 이다.
-    &lt;ul&gt;
-      &lt;li&gt;visible layer&lt;/li&gt;
-      &lt;li&gt;hidden layer&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/public/img/RBM_1.jpg&quot; alt=&quot;&amp;quot;RBM&amp;quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;recontruction&quot;&gt;Recontruction&lt;/h2&gt;
-
-&lt;p&gt;forward / backward 를 반복적으로 학습시켜 data 의 숨겨진 feature 들을 학습시킨다.&lt;br /&gt;
-loss 는 &lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%BF%A8%EB%B0%B1-%EB%9D%BC%EC%9D%B4%EB%B8%94%EB%9F%AC_%EB%B0%9C%EC%82%B0&quot; target=&quot;_blank&quot;&gt;KL Divergence&lt;/a&gt; 를 사용.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/public/img/RBM_2.jpg&quot; alt=&quot;&amp;quot;RBM&amp;quot;&quot; /&gt;&lt;/p&gt;
-
 </content>
  </entry>
  
