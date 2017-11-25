@@ -176,13 +176,14 @@ a.sidebar-nav-item:focus {
 }
 
 #sidebar-checkbox:checked + .sidebar {
+// .sidebar {
   z-index: 10;
   visibility: visible;
 }
 
 #sidebar-checkbox:checked ~ .wrap {
-// .wrap {
   @include transform(translateX(if($overlay-sidebar,0,if($reverse-layout, -14rem, 14rem))));
+  // .wrap {
 }
 
 #sidebar-checkbox:checked ~ .sidebar {

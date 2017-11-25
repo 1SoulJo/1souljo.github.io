@@ -1,4 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-23T07:22:32+00:00</updated><id>http://localhost:4000/</id><title type="html">1SoulJo</title><subtitle>Personal blog</subtitle><author><name>1SoulJo</name></author><entry><title type="html">Markdown syntax</title><link href="http://localhost:4000/study/markdown/2017/11/23/markdown-syntax/" rel="alternate" type="text/html" title="Markdown syntax" /><published>2017-11-23T12:30:00+00:00</published><updated>2017-11-23T12:30:00+00:00</updated><id>http://localhost:4000/study/markdown/2017/11/23/markdown-syntax</id><content type="html" xml:base="http://localhost:4000/study/markdown/2017/11/23/markdown-syntax/">&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-25T01:41:38+00:00</updated><id>http://localhost:4000/</id><title type="html">1SoulJo</title><subtitle>Personal blog</subtitle><author><name>1SoulJo</name></author><entry><title type="html">Tips for Mongodb</title><link href="http://localhost:4000/mongoose/study/2017/11/25/mongo-tips/" rel="alternate" type="text/html" title="Tips for Mongodb" /><published>2017-11-25T10:30:00+00:00</published><updated>2017-11-25T10:30:00+00:00</updated><id>http://localhost:4000/mongoose/study/2017/11/25/mongo-tips</id><content type="html" xml:base="http://localhost:4000/mongoose/study/2017/11/25/mongo-tips/">&lt;h1 id=&quot;useful-queries&quot;&gt;Useful queries&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;$ne&lt;/strong&gt;&lt;br /&gt;
+desc != ''
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{ desc: { $ne : '' } }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;$in&lt;/strong&gt;,  &lt;strong&gt;$nin&lt;/strong&gt;&lt;br /&gt;
+desc is in [] (or not in [])
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{ desc: { $nin : ['', null] } }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;$regex&lt;/strong&gt; : 정규 표현식&lt;br /&gt;
+해당 단어를 포함하는지 확인 가능
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{ 'title' : { $regex : 'shaver' } }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;data-export--import&quot;&gt;Data export / import&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;export
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mongoexport -h 127.0.0.1:27000 -d dbName -c collectionName -o filename.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;import
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mongoimport -h 127.0.0.1:27017 -d dbName -c collectionName --file filename.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>1SoulJo</name></author><summary type="html">Useful queries $ne desc != '' { desc: { $ne : '' } } $in, $nin desc is in [] (or not in []) { desc: { $nin : ['', null] } } $regex : 정규 표현식 해당 단어를 포함하는지 확인 가능 { 'title' : { $regex : 'shaver' } } Data export / import export mongoexport -h 127.0.0.1:27000 -d dbName -c collectionName -o filename.json import mongoimport -h 127.0.0.1:27017 -d dbName -c collectionName --file filename.json</summary></entry><entry><title type="html">Markdown syntax</title><link href="http://localhost:4000/study/markdown/2017/11/23/markdown-syntax/" rel="alternate" type="text/html" title="Markdown syntax" /><published>2017-11-23T12:30:00+00:00</published><updated>2017-11-23T12:30:00+00:00</updated><id>http://localhost:4000/study/markdown/2017/11/23/markdown-syntax</id><content type="html" xml:base="http://localhost:4000/study/markdown/2017/11/23/markdown-syntax/">&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;#headers&quot;&gt;Headers&lt;/a&gt;&lt;/li&gt;

@@ -4,13 +4,53 @@
  <title>1SoulJo</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-11-23T07:22:32+00:00</updated>
+ <updated>2017-11-25T01:41:38+00:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>1SoulJo</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Tips for Mongodb</title>
+   <link href="http://localhost:4000/mongoose/study/2017/11/25/mongo-tips/"/>
+   <updated>2017-11-25T10:30:00+00:00</updated>
+   <id>http://localhost:4000/mongoose/study/2017/11/25/mongo-tips</id>
+   <content type="html">&lt;h1 id=&quot;useful-queries&quot;&gt;Useful queries&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;$ne&lt;/strong&gt;&lt;br /&gt;
+desc != ''
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{ desc: { $ne : '' } }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;$in&lt;/strong&gt;,  &lt;strong&gt;$nin&lt;/strong&gt;&lt;br /&gt;
+desc is in [] (or not in [])
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{ desc: { $nin : ['', null] } }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;$regex&lt;/strong&gt; : 정규 표현식&lt;br /&gt;
+해당 단어를 포함하는지 확인 가능
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{ 'title' : { $regex : 'shaver' } }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;data-export--import&quot;&gt;Data export / import&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;export
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mongoexport -h 127.0.0.1:27000 -d dbName -c collectionName -o filename.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;import
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mongoimport -h 127.0.0.1:27017 -d dbName -c collectionName --file filename.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Markdown syntax</title>
