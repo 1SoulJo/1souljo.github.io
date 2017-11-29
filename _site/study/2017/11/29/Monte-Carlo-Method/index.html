@@ -11,7 +11,7 @@
 
   <title>
     
-      Markdown syntax &middot; 1SoulJo
+      Monte Carlo Method &middot; 1SoulJo
     
   </title>
 
@@ -179,185 +179,57 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Markdown syntax</h1>
-  <span class="post-date">23 Nov 2017</span>
+  <h1 class="post-title">Monte Carlo Method</h1>
+  <span class="post-date">29 Nov 2017</span>
    | 
   
   
   <article>
-    <h2 id="table-of-contents">Table of Contents</h2>
-
-<ol>
-  <li><a href="#headers">Headers</a></li>
-  <li><a href="#block-quote">Block Quote</a></li>
-  <li><a href="#list">List</a>
-    <ul>
-      <li><a href="#ordered-list">Ordered List</a></li>
-      <li><a href="#unordered-list">Unordered List</a></li>
-    </ul>
-  </li>
-  <li><a href="#code">Code</a></li>
-  <li><a href="#hr">수평선</a></li>
-  <li><a href="#links">Links</a></li>
-  <li><a href="#emphasis">강조</a></li>
-  <li><a href="#images">Images</a></li>
-</ol>
-
-<h1 id="1-headers-">1. Headers <a name="headers"></a></h1>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># This is a H1
-## This is a H2
-### This is a H3
-#### This is a H4
-##### This is a H5
-###### This is a H6
-</code></pre></div></div>
-
-<h1 id="this-is-a-h1">This is a H1</h1>
-<h2 id="this-is-a-h2">This is a H2</h2>
-<h3 id="this-is-a-h3">This is a H3</h3>
-<h4 id="this-is-a-h4">This is a H4</h4>
-<h5 id="this-is-a-h5">This is a H5</h5>
-<h6 id="this-is-a-h6">This is a H6</h6>
-
-<h1 id="2-block-quote-">2. Block Quote <a name="block-quote"></a></h1>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; This is a blockquote.
-&gt;&gt; This is a blockquote.
-&gt;&gt;&gt; This is a blockquote.
-</code></pre></div></div>
-
+    <h2 id="정의">정의</h2>
+<p>난수를 이용하여 함수의 값을 확률적으로 계산하는 알고리즘.</p>
+<h4 id="핵심-아이디어">핵심 아이디어</h4>
 <blockquote>
-  <p>This is a blockquote.</p>
-  <blockquote>
-    <p>This is a blockquote.</p>
-    <blockquote>
-      <p>This is a blockquote.</p>
-    </blockquote>
-  </blockquote>
+  <p>이론상 determistic 할지도 모르는 문제에 대해 randomness 를 사용하여 해결한다!</p>
 </blockquote>
 
-<h1 id="3-list-">3. List <a name="list"></a></h1>
+<p>주로 물리/수학적 문제들에 대해 다른 방법으로 해결할 수 없는 경우에 사용한다.(ㅋㅋ)</p>
 
-<h2 id="3-1-ordered-list-">3-1 Ordered list <a name="ordered-list"></a></h2>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 첫번째
-2. 두번째
-3. 세번째
-</code></pre></div></div>
-
+<h4 id="주요-적용-분야">주요 적용 분야</h4>
 <ol>
-  <li>첫번째</li>
-  <li>두번째</li>
-  <li>세번째</li>
+  <li>최적화 문제</li>
+  <li>numerical integration (수치적 미분?)</li>
+  <li>확률 분포로부터 draw 를 생성 (generating draw from probability distribution)</li>
 </ol>
 
-<h2 id="3-2-unordered-list-">3-2 Unordered list <a name="unordered-list"></a></h2>
+<h4 id="어떻게-동작하나">어떻게 동작하나?</h4>
+<p>일반적으로 아래 패턴으로 동작함.</p>
+<ol>
+  <li>입력 가능한 데이터의 도메인을 정의한다.</li>
+  <li>해당 도메인에 대한 확률 분포로부터 핸덤 데이터를 생성</li>
+  <li>입력 데이터에 대한 deterministic 계산을 수행</li>
+  <li>결과 수집</li>
+</ol>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 빨강
-  * 녹색
-    * 파랑
+<p>예를 들어, (x,y) 그래프의 1 사분면에 (0, 0) 을 중점으로 하고 반지름이 1 인 원이 있다고 생각해보자. 원의 넓이는 π/4 일 것이다.<br />
+이 때 Monte Carlo Method 를 이용해 π 값을 근사해 보면,</p>
+<ol>
+  <li>한 변의 길이가 1인 정사각형을 그리고, 그 안에 반지름이 1 인 원을 그린다. (1/4 원)</li>
+  <li>균등한 크기의 물체를 사각형 안에 균등하게 흩뿌린다.(uniformly scatter)</li>
+  <li>원 안에 들어간 물체의 갯수와 전체 갯수를 센다.</li>
+  <li>원 안에 들어간 물체의 갯수와 전체 갯수의 비율은 두 영역의 비율과 같으므로, 즉 π/4 가 된다.<br />
+해당 비율에 4을 곱해서 π 의 근사치를 구할 수 있다.</li>
+</ol>
 
-+ 빨강
-  + 녹색
-    + 파랑
+<p>여기서 중요한 포인트 2가지.</p>
+<blockquote>
 
-- 빨강
-- 녹색
-- 파랑
-</code></pre></div></div>
+  <ol>
+    <li>흩뿌릴 때 균등하게 분포되지 않으면 결과가 좋지 않을 것이다.</li>
+    <li>입력 데이터의 갯수가 많아야 한다. 많을 수록 결과가 개선될 것이다.</li>
+  </ol>
+</blockquote>
 
-<ul>
-  <li>빨강
-    <ul>
-      <li>녹색
-        <ul>
-          <li>파랑</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>빨강
-    <ul>
-      <li>녹색
-        <ul>
-          <li>파랑</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>빨강</li>
-  <li>녹색</li>
-  <li>파랑</li>
-</ul>
-
-<h1 id="4-code-">4. code <a name="code"></a></h1>
-
-<p>` 3개 연속으로 입력 후 코드 입력하면 됨. (코드 끝나면 ` 3개)</p>
-
-<p>```<br />
-print(‘hello world’)<br />
-```</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print('hello world')
-</code></pre></div></div>
-
-<h1 id="5-수평선-">5. 수평선 <a name="hr"></a></h1>
-
-<p>아래 줄은 모두 수평선을 만든다. 마크다운 문서를 미리보기로 출력할 때 페이지 나누기 용도로 많이 사용한다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* * *
-또는,
-***
-또는,
-*****
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="6-links-">6. Links <a name="links"></a></h1>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[link keyword][id]
-[id]: URL
-</code></pre></div></div>
-<p><a href="http://m.naver.com">url</a></p>
-
-<p>새 탭에서 여는 방법:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[link keyword][id]{:target='_blank'}
-[id]: URL
-</code></pre></div></div>
-<p><a href="http://m.naver.com" target="_blank">new tab</a></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>인라인 링크 : [title](link url)
-</code></pre></div></div>
-
-<p><a href="http://www.naver.com">inline link</a></p>
-
-<h1 id="7-강조-">7. 강조 <a name="emphasis"></a></h1>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*single asterisks*
-_single underscores_
-**double asterisks**
-__double underscores__
-++underline++
-~~cancelline~~
-</code></pre></div></div>
-
-<p><em>single asterisks</em><br />
-<em>single underscores</em><br />
-<strong>double asterisks</strong><br />
-<strong>double underscores</strong><br />
-++underline++<br />
-<del>cancelline</del></p>
-
-<h1 id="8-images-">8. Images <a name="images"></a></h1>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Alt text](/public/img/machine.jpg)
-![Alt text](/public/img/machine.jpg "Optional title")
-</code></pre></div></div>
-
-<p><img src="/public/img/maschine.jpg" alt="&quot;maschine&quot;" title="maschine" /></p>
+<p>Monte Carlo Method 를 적용하기 위해서는 많은 수의 랜덤 값들이 요구되는데, 이로 인하여 pseudorandom number generator 의 개발에 박차를 가하게 되었다. pseudorandom number generator 는 기존에 통계적 샘플링에서 주로 사용되던 랜덤 숫자 테이블(table of random numbers) 대비 훨씬훨씬 성능이 좋았다.</p>
 
   </article>
 </div>
@@ -368,18 +240,18 @@ __double underscores__
     
       <li>
         <h3>
-          <a href="/study/2017/11/29/Monte-Carlo-Method/">
-            Monte Carlo Method
-            <small>29 Nov 2017</small>
+          <a href="/mongoose/study/2017/11/25/mongo-tips/">
+            Tips for Mongodb
+            <small>25 Nov 2017</small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="/mongoose/study/2017/11/25/mongo-tips/">
-            Tips for Mongodb
-            <small>25 Nov 2017</small>
+          <a href="/study/markdown/2017/11/23/markdown-syntax/">
+            Markdown syntax
+            <small>23 Nov 2017</small>
           </a>
         </h3>
       </li>
