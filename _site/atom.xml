@@ -4,7 +4,7 @@
  <title>1SoulJo</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-11-29T11:47:57+00:00</updated>
+ <updated>2017-11-29T11:51:20+00:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>1SoulJo</name>
@@ -37,7 +37,7 @@
 &lt;p&gt;일반적으로 아래 패턴으로 동작함.&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;입력 가능한 데이터의 도메인을 정의한다.&lt;/li&gt;
-  &lt;li&gt;해당 도메인에 대한 확률 분포로부터 핸덤 데이터를 생성&lt;/li&gt;
+  &lt;li&gt;해당 도메인에 대한 확률 분포로부터 랜덤 데이터를 생성&lt;/li&gt;
   &lt;li&gt;입력 데이터에 대한 deterministic 계산을 수행&lt;/li&gt;
   &lt;li&gt;결과 수집&lt;/li&gt;
 &lt;/ol&gt;
