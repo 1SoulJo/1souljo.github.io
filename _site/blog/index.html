@@ -182,6 +182,163 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/study/2017/11/30/conditional-random-filed/">
+        CRF(Contional Random Field)
+      </a>
+    </h1>
+
+    <span class="post-date">30 Nov 2017</span>
+     | 
+    
+    <a href="/blog/tags/#crf" class="post-tag">CRF</a>
+    
+    
+
+    <article>
+      <h2 id="crf-란">CRF 란?</h2>
+<p>저스틴 비버의 하루 일상을 순서대로 찍은 사진들이 있다고 상상해보자.<br />
+우리는 각각의 사진에 한 단어로 설명(라벨)을 달고자 한다. (예&gt; 식사 사진, 수면 사진, 운전 중 등등)<br />
+어떻게 하면 될까?</p>
+
+<p>한가지 방법은 사진들이 가지는 순서에 대한 정보는 무시하고 각 사진 자체만으로 분류를 해보는 것이 될 수 있겠다.
+예를 들어 라벨이 달린 한 달 치의 사진이 주어졌다고 하면, 아침 6시 쯤에 찍힌 어두운 사진들은 ‘수면’ 과 연관이 있는 사진들이고,
+밝은 색깔이 많이 포함된 사진은 ‘춤’ 에 대한 사진, 자동차가 나온 사진들은 ‘운전’ 사진이라는 등의 사실을 배울 수 있을 것이다.</p>
+
+<p>하지만 순서에 대한 관점을 무시하면 많은 양의 정보를 잃게 된다. 예를 들어 입만 크게 나온 사진이 있다고 하자. 그건 노래하는 사진일까 밥 먹는 사진일까?
+만약 이전의 사진이 저스틴 비버가 밥을 먹거나 요리하는 사진이었다면, 그 입 사진은 ‘먹는’ 행위에 관한 사진일 가능성이 더 높을 것이다.
+하지만 이전 사진이 저스틴 비버가 노래나 춤 추는 사진이었다면, 입 사진도 마찬가지로 ‘노래하는’ 사진일 가능성이 높다.</p>
+
+<h3 id="part-of-speech-tagging">Part-of-Speech Tagging</h3>
+<p>part-of-speech tagging 를 예로 좀 더 자세히 살펴보도록 하자.<br />
+POS tagging 의 목적은 한 문장의 어휘들의 품사를 달아주는 것이다. (ex&gt; 명사, 동사, 형용사, 명사)<br />
+예를 들어 ‘Bob drank coffee at Starbucks.’ 라는 문장은 ‘Bob(명사) drank(동사) coffee(명사) at(전치사) Starbucks(명사)’ 가 될 것이다.
+그럼 이제 CRF 를 이용해서 <strong>문장에 대한</strong> POS tagging 을 해보자. 먼저 다른 classifier 들과 마찬가지로 feature function <script type="math/tex">f_i</script> 들을 정의해야 한다.</p>
+
+<h3 id="feature-functions-in-a-crf">Feature functions in a CRF</h3>
+<p>CRF 에서 각각의 feature function 은 아래와 같은 입력들을 받는 함수이다:</p>
+<ul>
+  <li>s : 문장</li>
+  <li>i : 단어의 문장 내 인덱스</li>
+  <li><script type="math/tex">l_i</script> : 현재 단어의 라벨</li>
+  <li><script type="math/tex">l_{i-1}</script> : 이전 단어의 라벨</li>
+</ul>
+
+<p>그리고 출력 값은 실수 값이 된다.(하지만 실제로는 0 또는 1 인 경우가 많다.)</p>
+
+<p><em>참고 : 본 포스팅에서는 문장 전체에 대한 라벨이 아니라 현재 단어와 이전 단어의 라벨만 사용하도록 제한하고 있다.
+이것은 <strong>linear-chain CRF</strong> 의 일종이라고 할 수 있다. 설명의 편의를 위해 범용적인 CRF 에 대한 내용은 생략하고자 한다.</em></p>
+
+<h3 id="feature-를-probabilties-로">Feature 를 Probabilties 로.</h3>
+<p>이제 각각의 feature function <script type="math/tex">f_j</script> 에 weight <script type="math/tex">\lambda_j</script> 를 할당해 보자.(데이터로부터 이 weight 들을 어떻게 학습하는 지는 아래에 설명하겠다.)<br />
+문장 s 가 주어졌을 때, 문장 내 모든 단어에 대한 weighted feature 값을 더하여 s 에 라벨 l 이 부여될 수 있는지 점수를 매길 수 있다.</p>
+
+<script type="math/tex; mode=display">score(l|s) = \sum_{j = 1}^m \sum_{i = 1}^n \lambda_j f_j(s, i, l_i, l_{i-1})</script>
+
+<p>(첫 번째 시그마는 각각의 feature function <script type="math/tex">f</script> 에 대한 것이고, 안쪽 시그마는 <script type="math/tex">i</script> 위치의 단어 각각에 대한 연산이다.)</p>
+
+<p>그 다음 지수 연산(exponentiating)과 정규화(normalizing)를 통해 이 점수를 확률
+<script type="math/tex">p(l | s)</script> 로 환산할 수 있다.</p>
+
+<script type="math/tex; mode=display">p(l | s) = \frac{exp[score(l|s)]}{\sum_{l’} exp[score(l’|s)]} = \frac{exp[\sum_{j = 1}^m \sum_{i = 1}^n \lambda_j f_j(s, i, l_i, l_{i-1})]}{\sum_{l’} exp[\sum_{j = 1}^m \sum_{i = 1}^n \lambda_j f_j(s, i, l’_i, l’_{i-1})]}</script>
+
+<h3 id="feature-function-예시">Feature Function 예시</h3>
+<p>그럼 이 feature function 들은 어떻게 생겼을까? POS tagging 의 feature 들은 다음과 같을 수 있다:</p>
+<ul>
+  <li>
+    <script type="math/tex; mode=display">% <![CDATA[
+f_1(s, i, l_i, l_{i-1}) =
+\begin{cases}
+ 1 & \mbox{if }l_i = \text{부사(ADVERB)} \mbox{ and the ith word ends in “-ly”} \\
+ 0 & \mbox{otherwise.}
+ \end{cases} %]]></script>
+    <ul>
+      <li>이 feature 에 대한 weight <script type="math/tex">\lambda_1</script> 값이 양수이고 큰 경우, 이 feature 는 -ly 로 끝나는 단어를 ‘부사’ 로 라벨링할 거라는 의미가 될 것이다.</li>
+    </ul>
+  </li>
+  <li>
+    <script type="math/tex; mode=display">% <![CDATA[
+f_2(s, i, l_i, l_{i-1}) =
+\begin{cases}
+1 & \mbox{if } i = 1, l_i = 동사(VERB), \mbox{ and the sentence ends in a question mark} \\
+0 & \mbox{otherwise.}
+\end{cases} %]]></script>
+    <ul>
+      <li>마찬가지로 feature 에 대한 weight <script type="math/tex">\lambda_2</script> 값이 양수이고 큰 경우, ? 로 끝나는 문장의 첫 단어를 ‘동사’ 로 라벨링하고자 할 것이다.</li>
+    </ul>
+  </li>
+  <li>
+    <script type="math/tex; mode=display">% <![CDATA[
+f_3(s, i, l_i, l_{i-1}) =
+\begin{cases}
+1 & \mbox{if }l_{i-1} = \mbox{형용사(ADJECTIVE)} \mbox{, and }l_i = \mbox{명사(NOUN)} \\
+0 & \mbox{otherwise.}
+\end{cases} %]]></script>
+    <ul>
+      <li>weight 가 양수 인 경우, 이 feature 는 형용사 뒤에는 명사가 온다는 것을 의미한다.</li>
+    </ul>
+  </li>
+  <li>
+    <script type="math/tex; mode=display">f_4(s, i, l_i, l_{i-1}) = 1 \mbox{ if }l_{i-1} =\mbox{ 전치사(PREPOSITION) and }l_i = \mbox{전치사(PREPOSITION).}</script>
+    <ul>
+      <li>이 함수에 대한 음수의 weight <script type="math/tex">\lambda_4</script> 는 전치사 뒤에는 전치시가 오면 안되다는 것을 의미한다. 따라서 그런 라벨링이 발생하지 않도록 할 수 있을 것이다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>이게 끝이다!<br />
+정리해보면 CRF 를 만들기 위해서는,</p>
+<ol>
+  <li>feature function 몇 개를 정의해주고, (feature function 은 전체 문장, 현재 위치, 그리고 주변의 라벨 값을 참조한다.)</li>
+  <li>weight 를 할당하고</li>
+  <li>전체를 몽땅 더한 다음,</li>
+  <li>필요하면 그 값을 확률로 환산하면 된다.</li>
+</ol>
+
+<p>이제 CRF 이 다른 머신 러닝 기술들와 어떻게 다른지 비교해보도록 하자.</p>
+
+<h2 id="smells-like-logistic-regression">Smells like Logistic Regression…</h2>
+<p>CRF 의 아래 식은 왠지 친숙해 보일 수도 있다. <em><a href="https://en.wikipedia.org/wiki/Logistic_regression" target="_blank">궁금하면 여기</a></em></p>
+
+<script type="math/tex; mode=display">p(l | s) = \frac{exp[\sum_{j = 1}^m \sum_{i = 1}^n f_j(s, i, l_i, l_{i-1})]}{\sum_{l’} exp[\sum_{j = 1}^m \sum_{i = 1}^n f_j(s, i, l’_i, l’_{i-1})]}</script>
+
+<p>왜냐하면 CRF 는 근본적으로 Logistic Regression 의 순차 버전(sequential version)이기 때문이다.</p>
+<blockquote>
+
+  <p>Logistic Regression 이 분류(claasification) 을 위한 log-linear 모델인데 반해,<br />
+CRF 는 순차적인 라벨링(sequential labels) 을 위한 log-linear 모델이다.</p>
+</blockquote>
+
+<h2 id="looks-like-hmms">Looks like HMMs…</h2>
+<p>HMM(<a href="http://en.wikipedia.org/wiki/Hidden_Markov_model" target="_blank">Hidden Markov Model</a>) 도 POS tagging(또한 일반적인 순차 라벨링) 에 사용될 수 있는 모델임을 기억하자.<br />
+CRF 가 라벨링 점수를 계산하기 위해 여러 개의 feature function 을 다 같이 사용하는데 비해,<br />
+HMM 은 라벨링을 위해 생성적(generative) 방식을 취한다. 그 식은 아래와 같다:</p>
+
+<script type="math/tex; mode=display">p(l,s) = p(l_1) \prod_i p(l_i | l_{i-1}) p(w_i | l_i)</script>
+
+<p>이 때,</p>
+<ul>
+  <li><script type="math/tex">p(l_i | l_{i-1})</script> 는 전이 확률(transition probabilities) - 예&gt; 전치사 뒤에 명사가 나올 확률</li>
+  <li><script type="math/tex">p(w_i | l_i)</script> 는 방출 확률(emission probabilities) - 예&gt; ‘명사’ 라벨이 ‘아빠’ 일 확률</li>
+</ul>
+
+<p>그럼 HMM 과 CRF 는 어떻게 다른가?<br />
+<strong>CRF 가 더 강력하다!</strong><br />
+CRF 는 HMM 이 할 수 있는 모든 것을 모델링할 수 있고, 그것보다 더 많은 일을 해낸다. 왜 그런지는 아래를 살펴보자.</p>
+
+<p>HMM 확률 식에 log 를 취하면 아래와 같다.</p>
+
+<script type="math/tex; mode=display">\log p(l,s) = \log p(l_0) + \sum_i \log p(l_i | l_{i-1}) + \sum_i \log p(w_i | l_i)</script>
+
+
+    <article>
+    <div class="post-more">
+      
+      <a href="/study/2017/11/30/conditional-random-filed/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/study/jsmath/tex/2017/11/29/js-math/">
         jsMath(TeX) 주요 문법
       </a>
@@ -600,200 +757,6 @@ desc is in [] (or not in [])
     <div class="post-more">
       
       <a href="/mongoose/study/2017/11/25/mongo-tips/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/study/markdown/2017/11/23/markdown-syntax/">
-        Markdown syntax
-      </a>
-    </h1>
-
-    <span class="post-date">23 Nov 2017</span>
-     | 
-    
-    
-
-    <article>
-      <h2 id="table-of-contents">Table of Contents</h2>
-
-<ol>
-  <li><a href="#headers">Headers</a></li>
-  <li><a href="#block-quote">Block Quote</a></li>
-  <li><a href="#list">List</a>
-    <ul>
-      <li><a href="#ordered-list">Ordered List</a></li>
-      <li><a href="#unordered-list">Unordered List</a></li>
-    </ul>
-  </li>
-  <li><a href="#code">Code</a></li>
-  <li><a href="#hr">수평선</a></li>
-  <li><a href="#links">Links</a></li>
-  <li><a href="#emphasis">강조</a></li>
-  <li><a href="#images">Images</a></li>
-</ol>
-
-<h1 id="1-headers-">1. Headers <a name="headers"></a></h1>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># This is a H1
-## This is a H2
-### This is a H3
-#### This is a H4
-##### This is a H5
-###### This is a H6
-</code></pre></div></div>
-
-<h1 id="this-is-a-h1">This is a H1</h1>
-<h2 id="this-is-a-h2">This is a H2</h2>
-<h3 id="this-is-a-h3">This is a H3</h3>
-<h4 id="this-is-a-h4">This is a H4</h4>
-<h5 id="this-is-a-h5">This is a H5</h5>
-<h6 id="this-is-a-h6">This is a H6</h6>
-
-<h1 id="2-block-quote-">2. Block Quote <a name="block-quote"></a></h1>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; This is a blockquote.
-&gt;&gt; This is a blockquote.
-&gt;&gt;&gt; This is a blockquote.
-</code></pre></div></div>
-
-<blockquote>
-  <p>This is a blockquote.</p>
-  <blockquote>
-    <p>This is a blockquote.</p>
-    <blockquote>
-      <p>This is a blockquote.</p>
-    </blockquote>
-  </blockquote>
-</blockquote>
-
-<h1 id="3-list-">3. List <a name="list"></a></h1>
-
-<h2 id="3-1-ordered-list-">3-1 Ordered list <a name="ordered-list"></a></h2>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 첫번째
-2. 두번째
-3. 세번째
-</code></pre></div></div>
-
-<ol>
-  <li>첫번째</li>
-  <li>두번째</li>
-  <li>세번째</li>
-</ol>
-
-<h2 id="3-2-unordered-list-">3-2 Unordered list <a name="unordered-list"></a></h2>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 빨강
-  * 녹색
-    * 파랑
-
-+ 빨강
-  + 녹색
-    + 파랑
-
-- 빨강
-- 녹색
-- 파랑
-</code></pre></div></div>
-
-<ul>
-  <li>빨강
-    <ul>
-      <li>녹색
-        <ul>
-          <li>파랑</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>빨강
-    <ul>
-      <li>녹색
-        <ul>
-          <li>파랑</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>빨강</li>
-  <li>녹색</li>
-  <li>파랑</li>
-</ul>
-
-<h1 id="4-code-">4. code <a name="code"></a></h1>
-
-<p>` 3개 연속으로 입력 후 코드 입력하면 됨. (코드 끝나면 ` 3개)</p>
-
-<p>```<br />
-print(‘hello world’)<br />
-```</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print('hello world')
-</code></pre></div></div>
-
-<h1 id="5-수평선-">5. 수평선 <a name="hr"></a></h1>
-
-<p>아래 줄은 모두 수평선을 만든다. 마크다운 문서를 미리보기로 출력할 때 페이지 나누기 용도로 많이 사용한다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* * *
-또는,
-***
-또는,
-*****
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="6-links-">6. Links <a name="links"></a></h1>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[link keyword][id]
-[id]: URL
-</code></pre></div></div>
-<p><a href="http://m.naver.com">url</a></p>
-
-<p>새 탭에서 여는 방법:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[link keyword][id]{:target='_blank'}
-[id]: URL
-</code></pre></div></div>
-<p><a href="http://m.naver.com" target="_blank">new tab</a></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>인라인 링크 : [title](link url)
-</code></pre></div></div>
-
-<p><a href="http://www.naver.com">inline link</a></p>
-
-<h1 id="7-강조-">7. 강조 <a name="emphasis"></a></h1>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*single asterisks*
-_single underscores_
-**double asterisks**
-__double underscores__
-++underline++
-~~cancelline~~
-</code></pre></div></div>
-
-<p><em>single asterisks</em><br />
-<em>single underscores</em><br />
-<strong>double asterisks</strong><br />
-<strong>double underscores</strong><br />
-++underline++<br />
-<del>cancelline</del></p>
-
-<h1 id="8-images-">8. Images <a name="images"></a></h1>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Alt text](/public/img/machine.jpg)
-![Alt text](/public/img/machine.jpg "Optional title")
-</code></pre></div></div>
-
-<p><img src="/public/img/maschine.jpg" alt="&quot;maschine&quot;" title="maschine" /></p>
-
-    <article>
-    <div class="post-more">
-      
-      <a href="/study/markdown/2017/11/23/markdown-syntax/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
