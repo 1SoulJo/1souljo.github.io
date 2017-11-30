@@ -11,7 +11,7 @@
 
   <title>
     
-      1SoulJo &middot; technical blog and study
+      Gibbs Sampling &middot; 1SoulJo
     
   </title>
 
@@ -89,7 +89,7 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
       
 
       <span class="">
-        <a class="sidebar-nav-item active" href="/">
+        <a class="sidebar-nav-item " href="/">
           Home
         </a>
 
@@ -178,85 +178,65 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
       </div>
 
       <div class="container content">
-        <h1> Recent posts </h1>
+        <div class="post">
+  <h1 class="post-title">Gibbs Sampling</h1>
+  <span class="post-date">29 Nov 2017</span>
+   | 
+  
+    <a href="/blog/tags/#gibbs-sampling" class="post-tag">gibbs-sampling</a>
+  
+  
+  <article>
+    <h2 id="정의">정의</h2>
+<p>In statistics, Gibbs sampling or a Gibbs sampler is a Markov chain Monte Carlo (MCMC) algorithm for obtaining a sequence of observations which are approximated from a specified multivariate probability distribution, when direct sampling is difficult. This sequence can be used to approximate the joint distribution (e.g., to generate a histogram of the distribution); to approximate the marginal distribution of one of the variables, or some subset of the variables (for example, the unknown parameters or latent variables); or to compute an integral (such as the expected value of one of the variables). Typically, some of the variables correspond to observations whose values are known, and hence do not need to be sampled.</p>
 
-    <h3><a href="/study/jsmath/tex/2017/11/29/js-math/">jsMath(TeX) 주요 문법</a></h3>
-    <p>
-        <small>
-            <strong>Nov 29, 2017</strong>
-        </small>
-        
-            <small><small><span>study</span></small></small>
-        
-            <small><small><span>jsMath</span></small></small>
-        
-            <small><small><span>TeX</span></small></small>
-        
-    </p>
+<p>Gibbs sampling is commonly used as a means of statistical inference, especially Bayesian inference. It is a randomized algorithm (i.e. an algorithm that makes use of random numbers), and is an alternative to deterministic algorithms for statistical inference such as the expectation-maximization algorithm (EM).</p>
 
-    <h3><a href="/study/2017/11/29/gibbs-sampling/">Gibbs Sampling</a></h3>
-    <p>
-        <small>
-            <strong>Nov 29, 2017</strong>
-        </small>
-        
-            <small><small><span>study</span></small></small>
-        
-    </p>
+<p>As with other MCMC algorithms, Gibbs sampling generates a Markov chain of samples, each of which is correlated with nearby samples. As a result, care must be taken if independent samples are desired. Generally, samples from the beginning of the chain (the burn-in period) may not accurately represent the desired distribution and are usually discarded. If necessary, one possible remedy is thinning the resulting chain of samples (i.e. only taking every nth value, e.g. every 10th value). It has been shown, however, that using a longer chain instead (e.g. a chain that is n times as long as the initially considered chain using a thinning factor of n) leads to better estimates of the true posterior. Thus, thinning should only be applied when time or computer memory are restricted.[1]</p>
 
-    <h3><a href="/study/2017/11/29/Monte-Carlo-Method/">Monte Carlo Method</a></h3>
-    <p>
-        <small>
-            <strong>Nov 29, 2017</strong>
-        </small>
-        
-            <small><small><span>study</span></small></small>
-        
-    </p>
+<p>hello
+<script type="math/tex">y = \frac{x ^ 2}{2} K\left(1-\sqrt{x^3 - 8}\right)</script>
+world</p>
 
-    <h3><a href="/mongoose/study/2017/11/25/mongo-tips/">Tips for Mongodb</a></h3>
-    <p>
-        <small>
-            <strong>Nov 25, 2017</strong>
-        </small>
-        
-            <small><small><span>mongoose</span></small></small>
-        
-            <small><small><span>study</span></small></small>
-        
-    </p>
+<p>출처 : <a href="https://en.wikipedia.org/wiki/Gibbs_sampling#Introduction" target="_blank">Gibbs Sampling</a></p>
 
-    <h3><a href="/study/markdown/2017/11/23/markdown-syntax/">Markdown syntax</a></h3>
-    <p>
-        <small>
-            <strong>Nov 23, 2017</strong>
-        </small>
-        
-            <small><small><span>study</span></small></small>
-        
-            <small><small><span>markdown</span></small></small>
-        
-    </p>
+  </article>
+</div>
 
-    <h3><a href="/study/machinelearning/2017/11/22/rectricted-boltzmann-machine/">Restricted Boltzmann Machines</a></h3>
-    <p>
-        <small>
-            <strong>Nov 22, 2017</strong>
-        </small>
-        
-            <small><small><span>study</span></small></small>
-        
-            <small><small><span>machinelearning</span></small></small>
-        
-    </p>
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/study/jsmath/tex/2017/11/29/js-math/">
+            jsMath(TeX) 주요 문법
+            <small>29 Nov 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/study/2017/11/29/Monte-Carlo-Method/">
+            Monte Carlo Method
+            <small>29 Nov 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/mongoose/study/2017/11/25/mongo-tips/">
+            Tips for Mongodb
+            <small>25 Nov 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
 
-    <h3><a href="/2014/01/01/example-content/">Example content</a></h3>
-    <p>
-        <small>
-            <strong>Jan  1, 2014</strong>
-        </small>
-        
-    </p>
 
 
       </div>
