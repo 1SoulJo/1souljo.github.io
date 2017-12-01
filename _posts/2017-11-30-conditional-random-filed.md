@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CRF(Contional Random Field)
+title: CRF(Conditional Random Field)
 date: 2017-11-30 17:00:00
 categories: study
 tags: CRF
@@ -23,7 +23,7 @@ tags: CRF
 part-of-speech tagging 를 예로 좀 더 자세히 살펴보도록 하자.  
 POS tagging 의 목적은 한 문장의 어휘들의 품사를 달아주는 것이다. (ex> 명사, 동사, 형용사, 명사)  
 예를 들어 'Bob drank coffee at Starbucks.' 라는 문장은 'Bob(명사) drank(동사) coffee(명사) at(전치사) Starbucks(명사)' 가 될 것이다.
-그럼 이제 CRF 를 이용해서 **문장에 대한** POS tagging 을 해보자. 먼저 다른 classifier 들과 마찬가지로 feature function $$f_i$$ 들을 정의해야 한다.
+그럼 이제 CRF 를 이용해서 POS tagging 을 해보자. 먼저 다른 classifier 들과 마찬가지로 feature function $$f_i$$ 들을 정의해야 한다.
 
 ### Feature functions in a CRF
 CRF 에서 각각의 feature function 은 아래와 같은 입력들을 받는 함수이다:

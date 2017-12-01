@@ -4,7 +4,7 @@
  <title>1SoulJo</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-12-01T03:18:35+00:00</updated>
+ <updated>2017-12-01T05:06:06+00:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>1SoulJo</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>CRF(Contional Random Field)</title>
+   <title>CRF(Conditional Random Field)</title>
    <link href="http://localhost:4000/study/2017/11/30/conditional-random-filed/"/>
    <updated>2017-11-30T17:00:00+00:00</updated>
    <id>http://localhost:4000/study/2017/11/30/conditional-random-filed</id>
@@ -34,7 +34,7 @@
 &lt;p&gt;part-of-speech tagging 를 예로 좀 더 자세히 살펴보도록 하자.&lt;br /&gt;
 POS tagging 의 목적은 한 문장의 어휘들의 품사를 달아주는 것이다. (ex&amp;gt; 명사, 동사, 형용사, 명사)&lt;br /&gt;
 예를 들어 ‘Bob drank coffee at Starbucks.’ 라는 문장은 ‘Bob(명사) drank(동사) coffee(명사) at(전치사) Starbucks(명사)’ 가 될 것이다.
-그럼 이제 CRF 를 이용해서 &lt;strong&gt;문장에 대한&lt;/strong&gt; POS tagging 을 해보자. 먼저 다른 classifier 들과 마찬가지로 feature function &lt;script type=&quot;math/tex&quot;&gt;f_i&lt;/script&gt; 들을 정의해야 한다.&lt;/p&gt;
+그럼 이제 CRF 를 이용해서 POS tagging 을 해보자. 먼저 다른 classifier 들과 마찬가지로 feature function &lt;script type=&quot;math/tex&quot;&gt;f_i&lt;/script&gt; 들을 정의해야 한다.&lt;/p&gt;
 
 &lt;h3 id=&quot;feature-functions-in-a-crf&quot;&gt;Feature functions in a CRF&lt;/h3&gt;
 &lt;p&gt;CRF 에서 각각의 feature function 은 아래와 같은 입력들을 받는 함수이다:&lt;/p&gt;
