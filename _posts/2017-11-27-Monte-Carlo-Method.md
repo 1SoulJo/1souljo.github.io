@@ -38,6 +38,8 @@ tags: monte-carlo-method
 1. 흩뿌릴 때 균등하게 분포되지 않으면 결과가 좋지 않을 것이다.
 2. 입력 데이터의 갯수가 많아야 한다. 많을 수록 결과가 개선될 것이다.
 
+![monte carlo method](/public/img/monte.gif)
+
 Monte Carlo Method 를 적용하기 위해서는 많은 수의 랜덤 값들이 요구되는데, 이로 인하여 pseudorandom number generator 의 개발에 박차를 가하게 되었다. pseudorandom number generator 는 기존에 통계적 샘플링에서 주로 사용되던 랜덤 숫자 테이블(table of random numbers) 대비 훨씬훨씬 성능이 좋았다.
 
 출처 : [Monte Carlo method](https://en.wikipedia.org/wiki/Monte_Carlo_method){:target='_blank'}
