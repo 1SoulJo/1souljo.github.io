@@ -41,7 +41,9 @@ CRF 에서 각각의 feature function 은 아래와 같은 입력들을 받는 �
 이제 각각의 feature function $$f_j$$ 에 weight $$\lambda_j$$ 를 할당해 보자.(데이터로부터 이 weight 들을 어떻게 학습하는 지는 아래에 설명하겠다.)  
 문장 s 가 주어졌을 때, 문장 내 모든 단어에 대한 weighted feature 값을 더하여 s 에 라벨 l 이 부여될 수 있는지 점수를 매길 수 있다.
 
-$$score(l|s) = \sum_{j = 1}^m \sum_{i = 1}^n \lambda_j f_j(s, i, l_i, l_{i-1})$$
+$$
+score(l|s) = \sum_{j = 1}^m \sum_{i = 1}^n \lambda_j f_j(s, i, l_i, l_{i-1})
+$$
 
 (첫 번째 시그마는 각각의 feature function $$f$$ 에 대한 것이고, 안쪽 시그마는 $$i$$ 위치의 단어 각각에 대한 연산이다.)
 
