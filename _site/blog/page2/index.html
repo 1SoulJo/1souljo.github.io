@@ -182,6 +182,59 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/mongoose/study/2017/11/25/mongo-tips/">
+        Tips for Mongodb
+      </a>
+    </h1>
+
+    <span class="post-date">25 Nov 2017</span>
+     | 
+    
+    
+
+    <article>
+      <h1 id="useful-queries">Useful queries</h1>
+
+<ul>
+  <li><strong>$ne</strong><br />
+desc != ''
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{ desc: { $ne : '' } }
+</code></pre></div>    </div>
+  </li>
+  <li><strong>$in</strong>,  <strong>$nin</strong><br />
+desc is in [] (or not in [])
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{ desc: { $nin : ['', null] } }
+</code></pre></div>    </div>
+  </li>
+  <li><strong>$regex</strong> : 정규 표현식<br />
+해당 단어를 포함하는지 확인 가능
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{ 'title' : { $regex : 'shaver' } }
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="data-export--import">Data export / import</h1>
+
+<ul>
+  <li>export
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mongoexport -h 127.0.0.1:27000 -d dbName -c collectionName -o filename.json
+</code></pre></div>    </div>
+  </li>
+  <li>import
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mongoimport -h 127.0.0.1:27017 -d dbName -c collectionName --file filename.json
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+    <article>
+    <div class="post-more">
+      
+      <a href="/mongoose/study/2017/11/25/mongo-tips/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/study/markdown/2017/11/23/markdown-syntax/">
         Markdown syntax
       </a>
