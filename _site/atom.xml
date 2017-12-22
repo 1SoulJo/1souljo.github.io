@@ -4,7 +4,7 @@
  <title>1SoulJo</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-12-22T02:07:18+00:00</updated>
+ <updated>2017-12-22T02:08:06+00:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>1SoulJo</name>
@@ -70,13 +70,13 @@ Average 값들에 모델 별 가중치를 두는 방식이다.
 Bagging 은 &lt;strong&gt;B&lt;/strong&gt;ootstrap &lt;strong&gt;agg&lt;/strong&gt;regation 이라고도 불린다.
 Bagging 을 이해하기 위해서는 먼저 bootstraping 을 이해할 필요가 있다. Bootstraping 은 n 개의 행을 가진 원본 dataset 으로부터 n 개의 행을 선택하는 샘플링 기법이다.
 핵심은 각각의 행이 선택될 때 동일한 확률로 선택된다는 것이다.&lt;br /&gt;
-  1st sampling
+  Original dataset
   &lt;img src=&quot;/public/img/BAGG1.png&quot; alt=&quot;Wtaverage&quot; /&gt;&lt;br /&gt;
-  2nd sampling
+  1st sampling
   &lt;img src=&quot;/public/img/BAGG2.png&quot; alt=&quot;Wtaverage&quot; /&gt;&lt;br /&gt;
-  3rd sampling
+  2nd sampling
   &lt;img src=&quot;/public/img/BAGG3.png&quot; alt=&quot;Wtaverage&quot; /&gt;&lt;br /&gt;
-  4th sampling
+  3rd sampling
   &lt;img src=&quot;/public/img/BAGG4.png&quot; alt=&quot;Wtaverage&quot; /&gt;&lt;br /&gt;
   랜덤하게 선택하기 때문에, 위와 같이 중복 선택이 허용된다.&lt;/p&gt;
 

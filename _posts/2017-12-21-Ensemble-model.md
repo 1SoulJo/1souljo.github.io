@@ -52,13 +52,13 @@ tags: ensemble
 Bagging 은 <strong>B</strong>ootstrap <strong>agg</strong>regation 이라고도 불린다.
 Bagging 을 이해하기 위해서는 먼저 bootstraping 을 이해할 필요가 있다. Bootstraping 은 n 개의 행을 가진 원본 dataset 으로부터 n 개의 행을 선택하는 샘플링 기법이다.
 핵심은 각각의 행이 선택될 때 동일한 확률로 선택된다는 것이다.  
-  1st sampling
+  Original dataset
   ![Wtaverage](/public/img/BAGG1.png)  
-  2nd sampling
+  1st sampling
   ![Wtaverage](/public/img/BAGG2.png)  
-  3rd sampling
+  2nd sampling
   ![Wtaverage](/public/img/BAGG3.png)  
-  4th sampling
+  3rd sampling
   ![Wtaverage](/public/img/BAGG4.png)  
   랜덤하게 선택하기 때문에, 위와 같이 중복 선택이 허용된다.
 
