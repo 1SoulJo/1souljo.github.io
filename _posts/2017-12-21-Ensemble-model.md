@@ -47,7 +47,7 @@ tags: ensemble
   Average 값들에 모델 별 가중치를 두는 방식이다.
   ![Wtaverage](/public/img/Wtaverage1.png)
 
-여러개의 모델들을 조합하는 방법은 이외에도 셀 수 없이 많을 것이다. 하지만 주로 사용되는 기술들이 있다:
+여러 개의 모델들을 조합하는 방법은 셀 수 없이 많을 것이다. 하지만 주로 사용되는 기술들을 소개한다:
 1. **Bagging**  
 Bagging 은 <strong>B</strong>ootstrap <strong>agg</strong>regation 이라고도 불린다.
 Bagging 을 이해하기 위해서는 먼저 bootstraping 을 이해할 필요가 있다. Bootstraping 은 n 개의 행을 가진 원본 dataset 으로부터 n 개의 행을 선택하는 샘플링 기법이다.
