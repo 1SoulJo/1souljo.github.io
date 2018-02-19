@@ -1,4 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-22T04:52:04+00:00</updated><id>http://localhost:4000/</id><title type="html">1SoulJo</title><subtitle>Personal blog</subtitle><author><name>1SoulJo</name></author><entry><title type="html">Ensemble model</title><link href="http://localhost:4000/study/2017/12/20/Ensemble-model/" rel="alternate" type="text/html" title="Ensemble model" /><published>2017-12-20T12:07:00+00:00</published><updated>2017-12-20T12:07:00+00:00</updated><id>http://localhost:4000/study/2017/12/20/Ensemble-model</id><content type="html" xml:base="http://localhost:4000/study/2017/12/20/Ensemble-model/">&lt;p&gt;원본 : &lt;a href=&quot;https://www.analyticsvidhya.com/blog/2017/02/introduction-to-ensembling-along-with-implementation-in-r/&quot;&gt;How to build Ensemble Models in machine learning?&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-02-19T06:31:41+00:00</updated><id>http://localhost:4000/</id><title type="html">1SoulJo</title><subtitle>Personal blog</subtitle><author><name>1SoulJo</name></author><entry><title type="html">Entropy, Cross-entropy and KL-divergence</title><link href="http://localhost:4000/study/2018/02/19/entropy/" rel="alternate" type="text/html" title="Entropy, Cross-entropy and KL-divergence" /><published>2018-02-19T15:33:00+00:00</published><updated>2018-02-19T15:33:00+00:00</updated><id>http://localhost:4000/study/2018/02/19/entropy</id><content type="html" xml:base="http://localhost:4000/study/2018/02/19/entropy/">&lt;p&gt;위 링크 영상에서 Entropy, Cross-entropy, KL-divergence 에 대해 이해하기 쉽게 설명을 해주고 있어, 정리 차원에서 작성해봅니다.&lt;/p&gt;
+
+&lt;p&gt;Origin
+Entropy, Cross-entropy 의 개념은 미국의 수학자이자 암호학자인 Claude Shannon 의 1948년 논문 “A Mathematical Theory of Communication” 으로부터 시작되었습니다. 그는 논문에서 현재의 정보 이론(Information Theory)으로 불리는 개념을 처음 소개하였습니다.
+디지털 통신에서 메세지는 bit 들로 이루어져 있는데, 알다시피 0 또는 1로 구성됩니다. 하지만 모든 bit 가 유용한 정보를 포함하지는 않습니다.&lt;/p&gt;
+
+&lt;p&gt;Shannon 은 자신의 이론에서 이렇게 설명합니다.&lt;/p&gt;
+
+&lt;p&gt;1 bit 의 정보를 전송하는 것은, 수신자의 불확실성을 2로 나누는 것을 의미한다.&lt;/p&gt;
+
+&lt;p&gt;직관적으로 잘 이해가되지는 않지만, 일기예보의 예를 들어보겠습니다. 내일 비가 올 확률이 50%, 맑을 확률이 50% 라고 합시다.
+만약 기상청에서 내일 비가 온다고 예보를 했다면, 이는 우리의 불확실성을 2로 나눈 셈입니다.
+같은 확률의 2가지 가능성이 있었는데, 예보로 인해 이것이 1로 줄었기 때문이죠.
+따라서 기상청은 실제로는 1 bit 의 유용한 정보를 보낸 것이라고 할 수 있습니다. 이것은 실제로 이 정보가 어떻게 인코딩되었는지와는 무관합니다.
+“Rainy” 라는 문자열로 전달되었다면 데이터의 크기는 40 bit 이겠지만 실제 유용한 정보는 1 bit 인 것이죠.&lt;/p&gt;
+
+&lt;p&gt;그럼 내일의 날씨를 8 가지로 구분할 수 있다면 어떨까요?
+예를 들면 ‘맑음, 약간 흐림, 흐림, 많이 흐림, 약간 비, 비, 많은 비, 천둥번개’ 라고 할 수도 있겠죠.
+따라서 기상청이 내일의 일기 예보를 우리에게 보낸다면, 이는 우리의 불확실성을 8로 나눈 것이라고 할 수 있습니다.
+8은 2의 3승이니까, 이 일기 예보는 3 bit 의 유용한 정보를 보낸 셈이죠.&lt;/p&gt;
+
+&lt;p&gt;이렇게 보면 ‘실제로 전달된 정보’의 bit 수를 계산하는건 간단해 보입니다. 불확실성을 줄여주는 인수(factor) 값에 로그2 를 씌워주면 되겠죠.
+위 예제라면, 아래 식으로 설명될겁니다.
+log2(8)=3
+지금까지 설명한 것은 각각의 날씨들이 모두 같은 확률로 발생할 수 있다고 가정했는데요,
+각각의 확률이 다르다면 어떻게 될까요?
+예를 들어, 내일 비가 올 확률이 25%, 맑을 확률은 75% 라고 해봅시다.
+이 때 기상청에서 내일 비가 올 것이라고 예보했다면, 이로 인해 우리의 불확실성은 1/2 이 아니라 1/4 로 줄었다고 할 수 있습니다.
+불확실성이라는 개념이 조금 헷갈리지만, 50%, 50% 의 가능성을 가진 결과에서 하나를 예측한 것보다는 25%, 75% 의 가능성의 가진 결과 중에 25% 일 것이라고 예측하는 쪽이 더 많은 불확실성을 낮춰줬다고 말하는게 당연하겠죠.
+만약에 비가 거의 오지 않는 사막에서 (비 올 확률 1%), 내일의 일기 예보가 ‘비’ 라고 한다면, 이는 불확실성이 1/100 로 훨씬 많이 줄어들었다고 할 수 있을 것입니다. 즉, 같은 ‘비’ 예보라고 하더라도, 비 올 확률이 50% 인 장소에서의 의미와, 1% 인 장소에서의 의미는 다를 것입니다. 당연히 1% 인 곳에서는 더 많은 불확실성이 해소된거죠.&lt;/p&gt;
+
+&lt;p&gt;– 계속&lt;/p&gt;</content><author><name>1SoulJo</name></author><category term="entropy," /><category term="cross" /><category term="entropy" /><summary type="html">위 링크 영상에서 Entropy, Cross-entropy, KL-divergence 에 대해 이해하기 쉽게 설명을 해주고 있어, 정리 차원에서 작성해봅니다. Origin Entropy, Cross-entropy 의 개념은 미국의 수학자이자 암호학자인 Claude Shannon 의 1948년 논문 “A Mathematical Theory of Communication” 으로부터 시작되었습니다. 그는 논문에서 현재의 정보 이론(Information Theory)으로 불리는 개념을 처음 소개하였습니다. 디지털 통신에서 메세지는 bit 들로 이루어져 있는데, 알다시피 0 또는 1로 구성됩니다. 하지만 모든 bit 가 유용한 정보를 포함하지는 않습니다. Shannon 은 자신의 이론에서 이렇게 설명합니다. 1 bit 의 정보를 전송하는 것은, 수신자의 불확실성을 2로 나누는 것을 의미한다. 직관적으로 잘 이해가되지는 않지만, 일기예보의 예를 들어보겠습니다. 내일 비가 올 확률이 50%, 맑을 확률이 50% 라고 합시다. 만약 기상청에서 내일 비가 온다고 예보를 했다면, 이는 우리의 불확실성을 2로 나눈 셈입니다. 같은 확률의 2가지 가능성이 있었는데, 예보로 인해 이것이 1로 줄었기 때문이죠. 따라서 기상청은 실제로는 1 bit 의 유용한 정보를 보낸 것이라고 할 수 있습니다. 이것은 실제로 이 정보가 어떻게 인코딩되었는지와는 무관합니다. “Rainy” 라는 문자열로 전달되었다면 데이터의 크기는 40 bit 이겠지만 실제 유용한 정보는 1 bit 인 것이죠. 그럼 내일의 날씨를 8 가지로 구분할 수 있다면 어떨까요? 예를 들면 ‘맑음, 약간 흐림, 흐림, 많이 흐림, 약간 비, 비, 많은 비, 천둥번개’ 라고 할 수도 있겠죠. 따라서 기상청이 내일의 일기 예보를 우리에게 보낸다면, 이는 우리의 불확실성을 8로 나눈 것이라고 할 수 있습니다. 8은 2의 3승이니까, 이 일기 예보는 3 bit 의 유용한 정보를 보낸 셈이죠. 이렇게 보면 ‘실제로 전달된 정보’의 bit 수를 계산하는건 간단해 보입니다. 불확실성을 줄여주는 인수(factor) 값에 로그2 를 씌워주면 되겠죠. 위 예제라면, 아래 식으로 설명될겁니다. log2(8)=3 지금까지 설명한 것은 각각의 날씨들이 모두 같은 확률로 발생할 수 있다고 가정했는데요, 각각의 확률이 다르다면 어떻게 될까요? 예를 들어, 내일 비가 올 확률이 25%, 맑을 확률은 75% 라고 해봅시다. 이 때 기상청에서 내일 비가 올 것이라고 예보했다면, 이로 인해 우리의 불확실성은 1/2 이 아니라 1/4 로 줄었다고 할 수 있습니다. 불확실성이라는 개념이 조금 헷갈리지만, 50%, 50% 의 가능성을 가진 결과에서 하나를 예측한 것보다는 25%, 75% 의 가능성의 가진 결과 중에 25% 일 것이라고 예측하는 쪽이 더 많은 불확실성을 낮춰줬다고 말하는게 당연하겠죠. 만약에 비가 거의 오지 않는 사막에서 (비 올 확률 1%), 내일의 일기 예보가 ‘비’ 라고 한다면, 이는 불확실성이 1/100 로 훨씬 많이 줄어들었다고 할 수 있을 것입니다. 즉, 같은 ‘비’ 예보라고 하더라도, 비 올 확률이 50% 인 장소에서의 의미와, 1% 인 장소에서의 의미는 다를 것입니다. 당연히 1% 인 곳에서는 더 많은 불확실성이 해소된거죠. – 계속</summary></entry><entry><title type="html">Feature Engineering</title><link href="http://localhost:4000/study/2017/12/22/feature-engineering/" rel="alternate" type="text/html" title="Feature Engineering" /><published>2017-12-22T15:33:00+00:00</published><updated>2017-12-22T15:33:00+00:00</updated><id>http://localhost:4000/study/2017/12/22/feature-engineering</id><content type="html" xml:base="http://localhost:4000/study/2017/12/22/feature-engineering/">&lt;p&gt;원본 : &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/create-features&quot;&gt;feature engineering&lt;/a&gt;&lt;/p&gt;</content><author><name>1SoulJo</name></author><category term="feature" /><category term="engineering" /><summary type="html">원본 : feature engineering</summary></entry><entry><title type="html">Ensemble model</title><link href="http://localhost:4000/study/2017/12/20/Ensemble-model/" rel="alternate" type="text/html" title="Ensemble model" /><published>2017-12-20T12:07:00+00:00</published><updated>2017-12-20T12:07:00+00:00</updated><id>http://localhost:4000/study/2017/12/20/Ensemble-model</id><content type="html" xml:base="http://localhost:4000/study/2017/12/20/Ensemble-model/">&lt;p&gt;원본 : &lt;a href=&quot;https://www.analyticsvidhya.com/blog/2017/02/introduction-to-ensembling-along-with-implementation-in-r/&quot;&gt;How to build Ensemble Models in machine learning?&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;지난 12개월 간 다양한 머신 러닝 해커톤에 참여해왔다. 시합이 끝나면 항상 1등의 솔루션을 확인해보는데, 보다보면 굉장한 insight 를 받기도 해서 차후 시합에 큰 도움이 되곤 했다.&lt;br /&gt;
 우승자들의 대부분은 잘 튜닝된 개별 모델의 앙상블(Ensemble) 과 더불어 feature engineering 을 사용하고 있었다.
@@ -878,128 +909,4 @@ __double underscores__
 &lt;p&gt;forward / backward 를 반복적으로 학습시켜 data 의 숨겨진 feature 들을 학습시킨다.&lt;br /&gt;
 loss 는 &lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%BF%A8%EB%B0%B1-%EB%9D%BC%EC%9D%B4%EB%B8%94%EB%9F%AC_%EB%B0%9C%EC%82%B0&quot; target=&quot;_blank&quot;&gt;KL Divergence&lt;/a&gt; 를 사용.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/public/img/RBM_2.jpg&quot; alt=&quot;&amp;quot;RBM&amp;quot;&quot; /&gt;&lt;/p&gt;</content><author><name>1SoulJo</name></author><summary type="html">제한된 볼츠만 머신 데이터를 재구성(reconstruct) 함을 통해 입력 데이터의 패턴을 찾아내는 모델. Geoff Hinton 교수가 제안 Vanishing Gradient 에 대한 해결 방안으로 사용 가능 Unsupervised Feature extractor 의 일종이라고 할 수 있다. 데이터에 내재한 패턴을 찾아냄. auto encoder 와 유사함. Shallow 2-layer net 이다. visible layer hidden layer Recontruction forward / backward 를 반복적으로 학습시켜 data 의 숨겨진 feature 들을 학습시킨다. loss 는 KL Divergence 를 사용.</summary></entry><entry><title type="html">Example content</title><link href="http://localhost:4000/2014/01/01/example-content/" rel="alternate" type="text/html" title="Example content" /><published>2014-01-01T00:00:00+00:00</published><updated>2014-01-01T00:00:00+00:00</updated><id>http://localhost:4000/2014/01/01/example-content</id><content type="html" xml:base="http://localhost:4000/2014/01/01/example-content/">&lt;div class=&quot;message&quot;&gt;
-  Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
-&lt;/div&gt;
-
-&lt;p&gt;Cum sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt;
-
-&lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt;
-
-&lt;p&gt;HTML defines a long list of available inline tags, a complete list of which can be found on the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Element&quot;&gt;Mozilla Developer Network&lt;/a&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;To bold text&lt;/strong&gt;, use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;To italicize text&lt;/em&gt;, use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;em&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Abbreviations, like &lt;abbr title=&quot;HyperText Markup Langage&quot;&gt;HTML&lt;/abbr&gt; should use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;abbr&amp;gt;&lt;/code&gt;, with an optional &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt; attribute for the full phrase.&lt;/li&gt;
-  &lt;li&gt;Citations, like &lt;cite&gt;— Mark otto&lt;/cite&gt;, should use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;cite&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;del&gt;Deleted&lt;/del&gt; text should use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;del&amp;gt;&lt;/code&gt; and &lt;ins&gt;inserted&lt;/ins&gt; text should use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;ins&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Superscript &lt;sup&gt;text&lt;/sup&gt; uses &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;sup&amp;gt;&lt;/code&gt; and subscript &lt;sub&gt;text&lt;/sub&gt; uses &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;sub&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Most of these elements are styled by browsers with few modifications on our part.&lt;/p&gt;
-
-&lt;h2 id=&quot;heading&quot;&gt;Heading&lt;/h2&gt;
-
-&lt;p&gt;Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.&lt;/p&gt;
-
-&lt;h3 id=&quot;code&quot;&gt;Code&lt;/h3&gt;
-
-&lt;p&gt;Cum sociis natoque penatibus et magnis dis &lt;code class=&quot;highlighter-rouge&quot;&gt;code element&lt;/code&gt; montes, nascetur ridiculus mus.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Example can be run directly in your JavaScript console
-&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Create a function that takes two arguments and returns the sum of those arguments
-&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;b&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;return a + b&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Call the function
-&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;adder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// &amp;gt; 8&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.&lt;/p&gt;
-
-&lt;h3 id=&quot;lists&quot;&gt;Lists&lt;/h3&gt;
-
-&lt;p&gt;Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Praesent commodo cursus magna, vel scelerisque nisl consectetur et.&lt;/li&gt;
-  &lt;li&gt;Donec id elit non mi porta gravida at eget metus.&lt;/li&gt;
-  &lt;li&gt;Nulla vitae elit libero, a pharetra augue.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Vestibulum id ligula porta felis euismod semper.&lt;/li&gt;
-  &lt;li&gt;Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.&lt;/li&gt;
-  &lt;li&gt;Maecenas sed diam eget risus varius blandit sit amet non magna.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.&lt;/p&gt;
-
-&lt;dl&gt;
-  &lt;dt&gt;HyperText Markup Language (HTML)&lt;/dt&gt;
-  &lt;dd&gt;The language used to describe and define the content of a Web page&lt;/dd&gt;
-
-  &lt;dt&gt;Cascading Style Sheets (CSS)&lt;/dt&gt;
-  &lt;dd&gt;Used to describe the appearance of Web content&lt;/dd&gt;
-
-  &lt;dt&gt;JavaScript (JS)&lt;/dt&gt;
-  &lt;dd&gt;The programming language used to build advanced Web sites and applications&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.&lt;/p&gt;
-
-&lt;h3 id=&quot;tables&quot;&gt;Tables&lt;/h3&gt;
-
-&lt;p&gt;Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Name&lt;/th&gt;
-      &lt;th&gt;Upvotes&lt;/th&gt;
-      &lt;th&gt;Downvotes&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tfoot&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Totals&lt;/td&gt;
-      &lt;td&gt;21&lt;/td&gt;
-      &lt;td&gt;23&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tfoot&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Alice&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;11&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Bob&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Charlie&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Want to see something else added? &lt;a href=&quot;https://github.com/poole/poole/issues/new&quot;&gt;Open an issue.&lt;/a&gt;&lt;/p&gt;</content><author><name>1SoulJo</name></author><summary type="html">Howdy! This is an example blog post that shows several types of HTML content supported in this theme. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Inline HTML elements HTML defines a long list of available inline tags, a complete list of which can be found on the Mozilla Developer Network. To bold text, use &amp;lt;strong&amp;gt;. To italicize text, use &amp;lt;em&amp;gt;. Abbreviations, like HTML should use &amp;lt;abbr&amp;gt;, with an optional title attribute for the full phrase. Citations, like — Mark otto, should use &amp;lt;cite&amp;gt;. Deleted text should use &amp;lt;del&amp;gt; and inserted text should use &amp;lt;ins&amp;gt;. Superscript text uses &amp;lt;sup&amp;gt; and subscript text uses &amp;lt;sub&amp;gt;. Most of these elements are styled by browsers with few modifications on our part. Heading Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Code Cum sociis natoque penatibus et magnis dis code element montes, nascetur ridiculus mus. // Example can be run directly in your JavaScript console // Create a function that takes two arguments and returns the sum of those arguments var adder = new Function(&quot;a&quot;, &quot;b&quot;, &quot;return a + b&quot;); // Call the function adder(2, 6); // &amp;gt; 8 Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa. Lists Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec id elit non mi porta gravida at eget metus. Nulla vitae elit libero, a pharetra augue. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis. HyperText Markup Language (HTML) The language used to describe and define the content of a Web page Cascading Style Sheets (CSS) Used to describe the appearance of Web content JavaScript (JS) The programming language used to build advanced Web sites and applications Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo. Tables Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Name Upvotes Downvotes Totals 21 23 Alice 10 11 Bob 4 3 Charlie 7 9 Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo. Want to see something else added? Open an issue.</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;/public/img/RBM_2.jpg&quot; alt=&quot;&amp;quot;RBM&amp;quot;&quot; /&gt;&lt;/p&gt;</content><author><name>1SoulJo</name></author><summary type="html">제한된 볼츠만 머신 데이터를 재구성(reconstruct) 함을 통해 입력 데이터의 패턴을 찾아내는 모델. Geoff Hinton 교수가 제안 Vanishing Gradient 에 대한 해결 방안으로 사용 가능 Unsupervised Feature extractor 의 일종이라고 할 수 있다. 데이터에 내재한 패턴을 찾아냄. auto encoder 와 유사함. Shallow 2-layer net 이다. visible layer hidden layer Recontruction forward / backward 를 반복적으로 학습시켜 data 의 숨겨진 feature 들을 학습시킨다. loss 는 KL Divergence 를 사용.</summary></entry></feed>

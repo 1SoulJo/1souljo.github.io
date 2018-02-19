@@ -9,7 +9,7 @@ logo: '/public/logo.png'
 # Site configurations
 plugins:
   - jekyll-paginate
-  - jekyll-sitemap
+#  - jekyll-sitemap
 markdown: kramdown
 kramdown:
   input: GFM

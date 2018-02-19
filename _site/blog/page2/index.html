@@ -151,7 +151,7 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
 
   <div class="sidebar-item">
     <p>
-    &copy; 2017 1SoulJo. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
+    &copy; 2018 1SoulJo. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
     </p>
   </div>
 
@@ -179,6 +179,113 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/study/2017/11/29/gibbs-sampling/">
+        Gibbs Sampling
+      </a>
+    </h1>
+
+    <span class="post-date">29 Nov 2017</span>
+     | 
+    
+    <a href="/blog/tags/#gibbs-sampling" class="post-tag">gibbs-sampling</a>
+    
+    
+
+    <article>
+      <h2 id="정의">정의</h2>
+<p>In statistics, Gibbs sampling or a Gibbs sampler is a Markov chain Monte Carlo (MCMC) algorithm for obtaining a sequence of observations which are approximated from a specified multivariate probability distribution, when direct sampling is difficult. This sequence can be used to approximate the joint distribution (e.g., to generate a histogram of the distribution); to approximate the marginal distribution of one of the variables, or some subset of the variables (for example, the unknown parameters or latent variables); or to compute an integral (such as the expected value of one of the variables). Typically, some of the variables correspond to observations whose values are known, and hence do not need to be sampled.</p>
+
+<p>Gibbs sampling is commonly used as a means of statistical inference, especially Bayesian inference. It is a randomized algorithm (i.e. an algorithm that makes use of random numbers), and is an alternative to deterministic algorithms for statistical inference such as the expectation-maximization algorithm (EM).</p>
+
+<p>As with other MCMC algorithms, Gibbs sampling generates a Markov chain of samples, each of which is correlated with nearby samples. As a result, care must be taken if independent samples are desired. Generally, samples from the beginning of the chain (the burn-in period) may not accurately represent the desired distribution and are usually discarded. If necessary, one possible remedy is thinning the resulting chain of samples (i.e. only taking every nth value, e.g. every 10th value). It has been shown, however, that using a longer chain instead (e.g. a chain that is n times as long as the initially considered chain using a thinning factor of n) leads to better estimates of the true posterior. Thus, thinning should only be applied when time or computer memory are restricted.[1]</p>
+
+<p>hello
+<script type="math/tex">y = \frac{x ^ 2}{2} K\left(1-\sqrt{x^3 - 8}\right)</script>
+world</p>
+
+<p>출처 : <a href="https://en.wikipedia.org/wiki/Gibbs_sampling#Introduction" target="_blank">Gibbs Sampling</a></p>
+
+    <article>
+    <div class="post-more">
+      
+      <a href="/study/2017/11/29/gibbs-sampling/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/study/2017/11/29/Monte-Carlo-Method/">
+        Monte Carlo Method
+      </a>
+    </h1>
+
+    <span class="post-date">29 Nov 2017</span>
+     | 
+    
+    <a href="/blog/tags/#monte-carlo-method" class="post-tag">monte-carlo-method</a>
+    
+    
+
+    <article>
+      <h2 id="정의">정의</h2>
+<p>난수를 이용하여 함수의 값을 확률적으로 계산하는 알고리즘.</p>
+<h4 id="핵심-아이디어">핵심 아이디어</h4>
+<blockquote>
+  <p>이론상 determistic 할지도 모르는 문제에 대해 randomness 를 사용하여 해결한다!</p>
+</blockquote>
+
+<p>주로 물리/수학적 문제들에 대해 다른 방법으로 해결할 수 없는 경우에 사용한다.(ㅋㅋ)</p>
+
+<h4 id="주요-적용-분야">주요 적용 분야</h4>
+<ol>
+  <li>최적화 문제</li>
+  <li>numerical integration (수치적 미분?)</li>
+  <li>확률 분포로부터 draw 를 생성 (generating draw from probability distribution)</li>
+</ol>
+
+<h4 id="어떻게-동작하나">어떻게 동작하나?</h4>
+<p>일반적으로 아래 패턴으로 동작함.</p>
+<ol>
+  <li>입력 가능한 데이터의 도메인을 정의한다.</li>
+  <li>해당 도메인에 대한 확률 분포로부터 랜덤 데이터를 생성</li>
+  <li>입력 데이터에 대한 deterministic 계산을 수행</li>
+  <li>결과 수집</li>
+</ol>
+
+<p>예를 들어, (x,y) 그래프의 1 사분면에 (0, 0) 을 중점으로 하고 반지름이 1 인 원이 있다고 생각해보자. 원의 넓이는 π/4 일 것이다.<br />
+이 때 Monte Carlo Method 를 이용해 π 값을 근사해 보면,</p>
+<ol>
+  <li>한 변의 길이가 1인 정사각형을 그리고, 그 안에 반지름이 1 인 원을 그린다. (1/4 원)</li>
+  <li>균등한 크기의 물체를 사각형 안에 균등하게 흩뿌린다.(uniformly scatter)</li>
+  <li>원 안에 들어간 물체의 갯수와 전체 갯수를 센다.</li>
+  <li>원 안에 들어간 물체의 갯수와 전체 갯수의 비율은 두 영역의 비율과 같으므로, 즉 π/4 가 된다.<br />
+해당 비율에 4을 곱해서 π 의 근사치를 구할 수 있다.</li>
+</ol>
+
+<p>여기서 중요한 포인트 2가지.</p>
+<blockquote>
+
+  <ol>
+    <li>흩뿌릴 때 균등하게 분포되지 않으면 결과가 좋지 않을 것이다.</li>
+    <li>입력 데이터의 갯수가 많아야 한다. 많을 수록 결과가 개선될 것이다.</li>
+  </ol>
+</blockquote>
+
+<p><img src="/public/img/monte.gif" alt="monte carlo method" /></p>
+
+<p>Monte Carlo Method 를 적용하기 위해서는 많은 수의 랜덤 값들이 요구되는데, 이로 인하여 pseudorandom number generator 의 개발에 박차를 가하게 되었다. pseudorandom number generator 는 기존에 통계적 샘플링에서 주로 사용되던 랜덤 숫자 테이블(table of random numbers) 대비 훨씬훨씬 성능이 좋았다.</p>
+
+<p>출처 : <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method" target="_blank">Monte Carlo method</a></p>
+
+    <article>
+    <div class="post-more">
+      
+      <a href="/study/2017/11/29/Monte-Carlo-Method/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -479,157 +586,11 @@ loss 는 <a href="https://ko.wikipedia.org/wiki/%EC%BF%A8%EB%B0%B1-%EB%9D%BC%EC%
     </div>
   </div>
   
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2014/01/01/example-content/">
-        Example content
-      </a>
-    </h1>
-
-    <span class="post-date">01 Jan 2014</span>
-     | 
-    
-    
-
-    <article>
-      <div class="message">
-  Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
-</div>
-
-<p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. <em>Aenean eu leo quam.</em> Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-
-<blockquote>
-  <p>Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-</blockquote>
-
-<p>Etiam porta <strong>sem malesuada magna</strong> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-
-<h2 id="inline-html-elements">Inline HTML elements</h2>
-
-<p>HTML defines a long list of available inline tags, a complete list of which can be found on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer Network</a>.</p>
-
-<ul>
-  <li><strong>To bold text</strong>, use <code class="highlighter-rouge">&lt;strong&gt;</code>.</li>
-  <li><em>To italicize text</em>, use <code class="highlighter-rouge">&lt;em&gt;</code>.</li>
-  <li>Abbreviations, like <abbr title="HyperText Markup Langage">HTML</abbr> should use <code class="highlighter-rouge">&lt;abbr&gt;</code>, with an optional <code class="highlighter-rouge">title</code> attribute for the full phrase.</li>
-  <li>Citations, like <cite>— Mark otto</cite>, should use <code class="highlighter-rouge">&lt;cite&gt;</code>.</li>
-  <li><del>Deleted</del> text should use <code class="highlighter-rouge">&lt;del&gt;</code> and <ins>inserted</ins> text should use <code class="highlighter-rouge">&lt;ins&gt;</code>.</li>
-  <li>Superscript <sup>text</sup> uses <code class="highlighter-rouge">&lt;sup&gt;</code> and subscript <sub>text</sub> uses <code class="highlighter-rouge">&lt;sub&gt;</code>.</li>
-</ul>
-
-<p>Most of these elements are styled by browsers with few modifications on our part.</p>
-
-<h2 id="heading">Heading</h2>
-
-<p>Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-
-<h3 id="code">Code</h3>
-
-<p>Cum sociis natoque penatibus et magnis dis <code class="highlighter-rouge">code element</code> montes, nascetur ridiculus mus.</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Example can be run directly in your JavaScript console
-</span>
-
-<span class="c1">// Create a function that takes two arguments and returns the sum of those arguments
-</span>
-<span class="kd">var</span> <span class="nx">adder</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"return a + b"</span><span class="p">);</span>
-
-<span class="c1">// Call the function
-</span>
-<span class="nx">adder</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
-<span class="c1">// &gt; 8</span></code></pre></figure>
-
-<p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-
-<h3 id="lists">Lists</h3>
-
-<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-
-<ul>
-  <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-  <li>Donec id elit non mi porta gravida at eget metus.</li>
-  <li>Nulla vitae elit libero, a pharetra augue.</li>
-</ul>
-
-<p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-
-<ol>
-  <li>Vestibulum id ligula porta felis euismod semper.</li>
-  <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-  <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
-</ol>
-
-<p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
-
-<dl>
-  <dt>HyperText Markup Language (HTML)</dt>
-  <dd>The language used to describe and define the content of a Web page</dd>
-
-  <dt>Cascading Style Sheets (CSS)</dt>
-  <dd>Used to describe the appearance of Web content</dd>
-
-  <dt>JavaScript (JS)</dt>
-  <dd>The programming language used to build advanced Web sites and applications</dd>
-</dl>
-
-<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-
-<h3 id="tables">Tables</h3>
-
-<p>Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Upvotes</th>
-      <th>Downvotes</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <td>Totals</td>
-      <td>21</td>
-      <td>23</td>
-    </tr>
-  </tfoot>
-  <tbody>
-    <tr>
-      <td>Alice</td>
-      <td>10</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <td>Bob</td>
-      <td>4</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>Charlie</td>
-      <td>7</td>
-      <td>9</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-
-<hr />
-
-<p>Want to see something else added? <a href="https://github.com/poole/poole/issues/new">Open an issue.</a></p>
-
-    <article>
-    <div class="post-more">
-      
-      <a href="/2014/01/01/example-content/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
 </div>
 
 <div class="pagination">
   
-    <span class="pagination-item older">Older</span>
+    <a class="pagination-item older" href="/blog/page3">Older</a>
   
   
     
